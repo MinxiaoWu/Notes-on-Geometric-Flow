@@ -1,0 +1,383 @@
+\section{Hypersurfaces in Euclidean Space}
+
+\begin{definition}[Hypersurface]\label{def:Hypersurface}
+    Let $M^n$ be an $n$-dimentional smooth manifold, $N$ be an $(n+1)$ dimentional smooth manifold, and let
+    \begin{equation}
+        X:M^n\to N
+    \end{equation}
+    be a smooth immersion (that is, a smooth map whose differential $\mathrm{d}X:TM^n\to TN$ is everywhere injective). Then the pair $(M^n,X)$ is defined as a hypersurface in $N$.
+\end{definition}
+
+We say that a map $X$ between two manifolds $M^n$ and $N$ is proper if its inverse $X^{-1}$ satisfies that any compact subset $K\subset N$ its preimage $X^{-1}(K)$ is also a compact set in $M^n$.
+
+\subsection{Mean Curvature}
+Given a vector $\boldsymbol{u}\in\mathbb{R}^{n+1}$, the \textbf{directional derivative} in the direction $\boldsymbol{u}$ is denoted by $D_{\boldsymbol{u}}$. It is an operator such tht it acts on a smooth function $f:\mathbb{R}^{n+1}\to\mathbb{R}$ by
+\begin{equation*}
+    D_{\boldsymbol{u}}:f\mapsto u^i\frac{\partial f}{\partial x^i}
+\end{equation*}
+and on a smooth vector field $V:\mathbb{R}^{n+1}\to\mathbb{R}^{n+1}$ by
+\begin{equation*}
+    D_{\boldsymbol{u}}:V\to u^i\frac{\partial V^j}{\partial x^i}\cdot\frac{\partial}{\partial x^j}
+\end{equation*}
+
+Since Euclidean space $\mathbb{R}^{n+1}$ is flat, the tangent space at any point possesses a natural isomorphism with the space itself (e.g, translation) $\sigma:T\mathbb{R}^{n+1}\to\mathbb{R}^{n+1}$; the so-called Euclidean covariant derivative is defined as the result of any directional derivative under the action of this isomorphism, which we denote by $\widetilde{D_{\boldsymbol{u}}}=\sigma\circ D_{\boldsymbol{u}}$. If we also denote that $\tilde{\boldsymbol{u}}=\sigma(\boldsymbol{u})$ then it's easy to verify that for any smooth vector field $V:\mathbb{R}^{n+1}\to\mathbb{R}^{n+1}$ there are
+\begin{equation*}
+    \widetilde{D_{\boldsymbol{u}}}(V)=D_{\tilde{\boldsymbol{u}}}(\widetilde{V})
+\end{equation*}
+
+\begin{definition}[Connection]\label{def:Connection}
+    For a proper smooth immersion $X:M\to\mathbb{R}^{n+1}$ such that $X(M)=\mathcal{M}$ we define a connection on the smooth manifold $M$ be a real bilinear map $\nabla:TM\times\Gamma(TM)\to TM$ which:
+    \begin{itemize}
+        \item respects the bundle structure, in the sense that $\pi(\nabla_{\boldsymbol{u}}V)=\pi(\boldsymbol{u})$ for any $\boldsymbol{u}\in TM$ and $\pi:TM\to M$ is the projection of the tangent bundle over $M$,
+        \item is smooth, in the sense that $\nabla_U V\in\Gamma(TM)$ for each pair $U,V\in\Gamma(TM)$ where
+        \begin{equation*}
+            \nabla_U V(p)=\nabla_{U_p}V=\nabla(U_p,V)
+        \end{equation*}
+        \item satisfies the Leibniz rule.
+    \end{itemize}
+    where $\Gamma(TM)$ denotes all the smooth vector fields on $TM$. For a fixed $\boldsymbol{u}\in TM$, the induced derivation $\nabla_{\boldsymbol{u}}:\Gamma(TM)\to TM$ is called the covariant derivative in the direction $\boldsymbol{u}$.
+\end{definition}
+
+Obviously, the direction derivative is a Euclidean connection. Then we define the Euclidean pulback connection $D$ on the pulback bundle $X^* T\mathbb{R}^{n+1}$ (such that its fiber on $p\in M$ is $T_{X(p)}\mathbb{R}^{n+1}$) as
+\begin{equation*}
+    D_{\boldsymbol{u}}(X^* V)=D_{dX(\boldsymbol{u})}(V)
+\end{equation*}
+for any tangent vector $\boldsymbol{u}\in TM$ and any vector field $V\in \Gamma(T\mathbb{R}^{n+1})$.
+
+Observe that in the embedded case the restriction bundle $T\mathbb{R}^{n+1}\mid_{\mathcal{M}}$ splits as an orthogonal sum $T\mathcal{M}\oplus^{\bot}N\mathcal{M}$, where $N\mathcal{M}$ is the normal bundle. Then for any $\boldsymbol{u}\in T\mathbb{R}^{n+1}$ we define the normal and tangential projections as
+\begin{equation*}
+    {\boldsymbol{u}}^\bot=\boldsymbol{u}-\left<\boldsymbol{u},\boldsymbol{\nu}\right>\boldsymbol{\nu},\,\,\,\,\, {\boldsymbol{u}}^\top=\left<\boldsymbol{u},\boldsymbol{\nu}\right>\boldsymbol{\nu}
+\end{equation*}
+where $\boldsymbol{\nu}$ is either of the two unit vectors in $N_p\mathcal{M}$ and $p=\pi(u)$. Then pulling it back to $M$ we have $X^* T\mathbb{R}^{n+1}\cong TM\oplus^\bot NM$.
+
+\begin{lemma}\label{lem:H}
+    If $\mathcal{M}^n\hookrightarrow\mathbb{R}^{n+1}$ is an embedded hypersurface, then the tangential projection of the Euclidean connection $D$
+    \begin{equation}
+        \nabla_{\boldsymbol{u}}V={\left(D_{\boldsymbol{u}}V\right)}^{\top}
+    \end{equation}
+    defines a connection $\nabla:T\mathcal{M}^n\times\Gamma(T\mathcal{M}^n)\to T\mathcal{M}^n$ on $\mathcal{M}^n$. It is metric compatible and symmetric.
+\end{lemma}
+
+Thus, by pulling it back to $M$ we can get a connection $\nabla: TM^n\times \Gamma(TM^n)\to TM^n$ via
+\begin{equation}\label{eq:H-1-1}
+    dX(\nabla_{\boldsymbol{u}}V)={\left(D_{\boldsymbol{u}}[dX(V)]\right)}^\top
+\end{equation}
+where $D$ is the Euclidean pulback connection on $X^* T\mathbb{R}^{n+1}$. It can be verify that the pulback connection $\nabla$ is the Levi-Civita connection of the Riemannian metric $g$.
+
+On a local coordinate ${\left\{x^i\right\}}$ we introduce the Christoffel symbols $\Gamma^k_{ij}:U\to \mathbb{R}$ to depict the connection, which is defined by
+\begin{equation}
+    \Gamma^k_{ij}\partial_k=\nabla_i\partial_j
+\end{equation}
+Since by (\ref{eq:H-1-1}) we have that $dX(\nabla_i\partial_j)={[D_i(\partial_j X)]}^\top$ and also
+\begin{equation*}
+    dX\left(\nabla_i\partial_j\right)=dX\left(\Gamma^k_{ij}\partial_k\right)=\Gamma^k_{ij}\partial_k X
+\end{equation*}
+then for any $\partial_l X$ we have
+\begin{equation*}
+    \left<{\left[D_i(\partial_j X)\right]}^\top,\partial_l X\right>=\left<D_i(\partial_j X),\partial_l X\right>=\left<\partial_i\partial_j X,\partial_l X\right>
+\end{equation*}
+On the other hand, by the Riemannian metric $g$ we have that $\Gamma^k_{ij}\left<\partial_k,\partial_l\right>=\Gamma^k_{ij}g_{kl}$. If we let $g^{kl}\cdot g_{kl}=1$ then we have that
+\begin{equation*}
+    \Gamma^k_{ij}=g^{kl}\left<\partial_i\partial_j X,\partial_l X\right>
+\end{equation*}
+
+Now we define the normal part of the Euclidean covariant derivative ${(D_{\boldsymbol{u}}V)}^\bot$ along $\mathcal{M}$ as the second fundamental form of $\mathcal{M}$.
+
+\begin{lemma}\label{lem:H-1-1}
+    Let $u,v\in T\mathcal{M}$, and let $V\in\Gamma(T\mathcal{M})$ be an extension of $v$. Then the smooth map $\mathbf{II}:T\mathcal{M}\times T\mathcal{M}\to N\mathcal{M}$ defined by
+    \begin{equation}\label{eq:H-1-2}
+        \mathbf{II}(u,v)={(D_u V)}^\bot
+    \end{equation}
+    is well-defined and bilinear. It also happens to be symmetric.
+\end{lemma}
+
+Pulling back to $M$ we obtain the symmetric, bilinear second funcdamental form $\boldsymbol{h}:TM\times TM\to NM$ of $X:M\to \mathbb{R}^{n+1}$
+\begin{equation}\label{eq:H-1-3}
+    \boldsymbol{h}(u,v)={\left(D_{\boldsymbol{u}}V\right)}^\bot
+\end{equation}
+where $V\in\Gamma(TM)$ is any extension of $v$.
+
+Choosing a unit normal $\boldsymbol{\nu}\in N_x M=N_p\mathcal{M}$, where $p=X(x)$ we can write
+\begin{equation*}
+    {\boldsymbol{h}}_x(u,v)=-h_{x}(u,v)\cdot\boldsymbol{\nu}=-\mathrm{II}_p(u,v)\boldsymbol{\nu}=\mathbf{II}_p(u,v)
+\end{equation*}
+Now given $u,v\in T_x M$, if we define the derivative of $dX$ as $\nabla^2 X(u,v)=(\nabla_u dX)(v)$ then by the following Leibniz rule
+\begin{equation*}
+    \nabla_{\boldsymbol{u}}[dX(V)]=(\nabla_{\boldsymbol{u}}dX)(v)+dX(\nabla_{\boldsymbol{u}}V)
+\end{equation*}
+we could have that
+\begin{equation*}
+    \nabla^2 X=D_{\boldsymbol{u}}[dX(V)]-dX(\nabla_{\boldsymbol{u}}V)={[D_{\boldsymbol{u}}(dX(V))]}^\bot
+\end{equation*}
+It follows that
+\begin{equation*}
+    \nabla^2 X=\boldsymbol{h}
+\end{equation*}
+or, in components with respect to local bases ${\left\{e_i\right\}}^n_{i=1}$ for $T_x M$ and $\boldsymbol{\nu}$ for $N_x M$,
+\begin{equation*}
+    \nabla_i\nabla_j X=-h_{ij}\boldsymbol{\nu}
+\end{equation*}
+
+To each symmetric bilinear form corresponds a selfadjoint endomorphism. The \textbf{Weingarten map} $\mathrm{L}_p:T_p\mathcal{M}\to T_p\mathcal{M}$ of $\mathcal{M}$ (corresponding to the choice of unit normal $\boldsymbol{\nu}$ at $p$) is the linear map defined by
+\begin{equation*}
+    \mathrm{L}_p(\boldsymbol{u})=D_{\boldsymbol{u}}N
+\end{equation*}
+where $N\in\Gamma(N\mathcal{M})$ of $\boldsymbol{\nu}$ satisfying $\left|N\right|\equiv 1$ in a neighborhood of $p$. It is well-defined because
+\begin{equation*}
+    0=\frac{1}{2}D_{\boldsymbol{u}} {\left|N\right|}^2=\left<D_{\boldsymbol{u}}N,\boldsymbol{\nu}\right>
+\end{equation*}
+and also since for any $v\in T_p\mathcal{M}$ we have that $\left<N,v\right>=0$, then by the Leibniz rule we have that
+\begin{equation*}
+    0=\nabla_{\boldsymbol{u}}\left<N,v\right>=\left<D_{\boldsymbol{u}}N,v\right>+\left<\boldsymbol{\nu},D_{\boldsymbol{u}}V\right>
+\end{equation*}
+From (\ref{eq:H-1-2}) we have that
+\begin{equation*}
+    \left<D_{\boldsymbol{u}}N,v\right>=-\left<\boldsymbol{\nu},D_{\boldsymbol{u}}V\right>=\mathbf{II}(u,v)
+\end{equation*}
+
+Pulling back the map $\mathrm{L}_p$ to $M^n$, we obtain the Weingarten tensor $L_x:T_x M\to T_x M$ of $X:M^n\to\mathbb{R}^{n+1}$,
+\begin{equation*}
+    L_x(\boldsymbol{u})=D_{\boldsymbol{u}}N
+\end{equation*}
+where $N\in\Gamma(NM)$ of some $\boldsymbol{\nu}$ satisfying $\left|N\right|\equiv 1$ in a neighborhood of $p$. Let $g$ be the Riemannian metric on $M$ then we have that
+\begin{align*}
+    \mathbf{II}(u,v)&={(D_{\boldsymbol{u}}V)}^\bot=\left<D_{\boldsymbol{u}}N,v\right>\\
+    &=\left<\mathrm{L}_p(\boldsymbol{u}),v\right>=g[L_x(\boldsymbol{u}),v]={\boldsymbol{h}}_x(u,v)
+\end{align*}
+With respect to local coordinates ${\left\{x^i\right\}}^n_{i=1}$ on $M^n$, let $L_x(\partial_i)={\mathrm{L}}^k_i\partial_k X$ then we have
+\begin{equation*}
+    \mathbf{II}_{ij}:=\mathbf{II}(\partial_i,\partial_j)=g\left({\mathrm{L}}^k_i\partial_k,\partial_j\right)={\mathrm{L}}^k_i g_{kj}
+\end{equation*}
+Thus, by ${\mathrm{L}}^k_i=\mathbf{II}_{ij} g^{kj}$ there are
+\begin{equation}\label{eq:H-1-4}
+    D_i N=L_x(\partial_i)={\mathrm{L}}^k_i\partial_k X=\mathbf{II}_{ij} g^{kj}\partial_k X
+\end{equation}
+
+If $\mathcal{M}$ is orientable, then we can choose a global unit normal field $\mathrm{N}\in\Gamma \mathcal{M}$ in which case the tensor fields $\boldsymbol{h}\in\Gamma(T^*M\otimes T^*M)$, $L\in\Gamma(T^*M\otimes TM)$, $\mathbf{II}\in\Gamma(T^*\mathcal{M}\otimes T^*\mathcal{M})$, and $\mathrm{L}\in\Gamma(T^*\mathcal{M}\otimes T\mathcal{M})$ are all well-defined globally. We can identify such vetor field $\mathrm{N}:\mathcal{M}\to N\mathcal{M}\subseteq T\mathbb{R}^{n+1}$ by the following \textbf{Gaussian map}
+\begin{equation*}
+    \mathrm{G}:\mathcal{M}\to S^n\subseteq\mathbb{R}^{n+1}
+\end{equation*}
+via the canonical identification $T_p\mathbb{R}^{n+1}\cong\mathbb{R}^{n+1}$ and $S^n$ is an $n$-dimentional sphere. Then $\mathrm{G}(p)=\mathrm{N}_p$ and the tangent spaces $T_p\mathcal{M}$, $T_{\mathrm{G}(p)}S^n$ coincide under the identification $T_p\mathbb{R}^{n+1}\cong\mathbb{R}^{n+1}$.
+\begin{equation*}
+    T_{\mathrm{G}(p)}S^n=\left\{v\in T_{G(p)}\mathbb{R}^{n+1}\left|\,\left<v,\mathrm{N}_{\mathrm{G}(p)}\right>=0\right.\right\}
+\end{equation*}
+We define $A_p$ the \textbf{shape operator} of $\mathcal{M}$ as the following derivative of Gaussian map
+\begin{equation*}
+    A_p:=dG\mid_p:T_p\mathcal{M}\to T_{\mathrm{G}(p)}S^n
+\end{equation*}
+Since for any curve $\gamma(t)$ that go through $p$ and have the tangent vector $\boldsymbol{u}$ at the point $p$ we have that
+\begin{equation*}
+    d\mathrm{G}_p(\boldsymbol{u})=\left.\frac{\mathrm{d}}{\mathrm{d}t}\mathrm{G}(\gamma(t))\right|_{t=0}=\left.\frac{\mathrm{d}}{\mathrm{d}t} {\mathrm{N}}_{\gamma(t)}\right|_{t=0}=D_{\boldsymbol{u}}\mathrm{N}=\mathrm{L}_{p}(\boldsymbol{u})
+\end{equation*}
+Then there are $A=\mathrm{L}$.
+
+\begin{definition}[Principal Curvature]\label{def:Principal Curvature}
+    The (ordered) eigenvalues
+    \begin{equation}
+        \kappa_1\le \kappa_2\le\cdots\le\kappa_n
+    \end{equation}
+    of the Weingarten tensor are called the \textbf{principal curvatures} of $X:M\to\mathbb{R}^{n+1}$. The corresponding unit eigenvectors are called \textbf{principal directions}. We refer to an orthonormal basis
+of principal directions at a point as a \textbf{principal basis} and a local or global orthonormal frame field (not necessarily continuous) of principal directions as a \textbf{principal frame field}.
+\end{definition}
+
+For a Cylindrical surface $x(u,v)=(\cos{v},\sin{v},u)$ where $u,v\in\mathbb{R}$ we can find its tangent vectors as $X_u=\partial_u x=(0,0,u)$ and $X_v=\partial_v x=(-\sin{v},\cos{v},0)$. Then the metric tensor can be written as
+\begin{equation*}
+    G={[g_{ij}]}_{2\times 2}=\left(
+        \begin{matrix}
+            \left<X_u,X_u\right>&    \left<X_u,X_v\right>\\
+            \left<X_v,X_u\right>&    \left<X_v,X_v\right>\\
+        \end{matrix}
+    \right)=\left(\begin{matrix}
+        1&    0\\
+        0&    1\\
+    \end{matrix}\right)
+\end{equation*}
+So its inverse $G^{-1}$ is also an identity matrix. The unit normal vector $\boldsymbol{\nu}$ of this surface can be calculated as
+\begin{equation*}
+    \boldsymbol{\nu}=X_u\times X_v=\left|\begin{matrix}
+        \boldsymbol{i}&    \boldsymbol{j}&    \boldsymbol{k}\\
+        0&    0&    1\\
+        -\sin{v}&    \cos{v}&    0\\
+    \end{matrix}\right|=(-\cos{v},-\sin{v},0)
+\end{equation*}
+By (\ref{eq:H-1-3}) we know that the components of the second fundamental form $\boldsymbol{h}$ should satisfies that $h_{ij}=\left<\nabla_i X_j,\boldsymbol{\nu}\right>$. Then there are
+\begin{equation*}
+    \boldsymbol{h}=\left(\begin{matrix}
+        \left<\nabla_u X_u,\boldsymbol{\nu}\right>&    \left<\nabla_u X_v,\boldsymbol{\nu}\right>\\
+        \left<\nabla_v X_v,\boldsymbol{\nu}\right>&    \left<\nabla_v X_u,\boldsymbol{\nu}\right>\\
+    \end{matrix}\right)=\left(\begin{matrix}
+        0&    0\\
+        0&    -1\\
+    \end{matrix}\right)
+\end{equation*}
+By (\ref{eq:H-1-4}) we can find the matrix of the Weingarten map as $\mathrm{L}=-h_{ij}g^{ij}=-h_{ij}$. Thus the principal curvature of $x(u,v)$ is $\kappa_1=0$ and $\kappa_2=1$.
+
+\begin{definition}[Mean Curvature]\label{def:Mean Curvature}
+    We define the trace of the Weingarten tensor as the \textbf{mean curvature} and denote it by $H$, that is
+    \begin{equation}
+        H:=\mathrm{tr}(\mathrm{L})=\kappa_1+\kappa_2+\cdots\kappa_n=\mathrm{tr}(L)
+    \end{equation}
+\end{definition}
+
+The mean curvature measures the local variation of area under small perturbations of the hypersurface. It is equal to the average of the second fundamental form over the tangent sphere and can also be related to the scalar part of the divergence of $dX$ with respect to the induced covariant derivative and metric on $T^*M\otimes X^* TM$. We shall call a hypersurface $X:M^n\to\mathbb{R}^{n+1}$ \textbf{mean convex} if it admits a unit normal field with respect to which its mean curvature is nonnegative.
+
+Now for any vector field or tensor field $V$ we define the divergence of it as the trace of its covariant differential, that is
+\begin{equation}\label{eq:H-1-5}
+    \mathrm{div} V:=\mathrm{tr}(u\mapsto\nabla_u V)
+\end{equation}
+Then we can also have that
+\begin{equation*}
+    \mathrm{div}(dX)=\mathrm{tr}[\nabla(dX)]=-g^{ij}h_{ij}\boldsymbol{\nu}=-H\cdot\boldsymbol{\nu}=\boldsymbol{H}
+\end{equation*}
+If we define the Laplacian $\Delta f$ of a smooth function $f$ as $\Delta f=\mathrm{div}(\mathrm{grad}\, f)$ then it's easy to know that $\boldsymbol{H}=\mathrm{div}(dX)=\Delta X$ where $\mathrm{grad}\,{f}$, the gradient of $f$ is the tangent vector field dual to the differential $\mathrm{d} f$ of $f$.
+
+\begin{definition}[Gaussian Curvature]\label{def:Gaussian Curvature}
+    We define the Gaussian Curvature $K$ as the determinant of Weingarten tensor that is
+    \begin{equation}
+        K=\det{(\mathrm{L})}=\kappa_1\cdot\kappa_2\cdots\kappa_n=\det{(L)}
+    \end{equation}
+\end{definition}
+
+More generally, the $m$-th mean Curvature $H_m$, defined for $1\le m\le n$ is the $m$-th elementary symmetric polynomial in the principal curvatures:
+\begin{equation*}
+    H_m:=\sum_{1\le i_1<i_2<\cdots<i_m\le n} \kappa_1\cdots\kappa_m
+\end{equation*}
+The \textbf{Harmonic mean curvature} $H_{-1}$ is defined by
+\begin{equation*}
+    H_{-1}:=\frac{1}{\kappa^{-1}_{1}+\cdots+\kappa^{-1}_{n}}=\frac{H_{n}}{H_{n-1}}
+\end{equation*}
+
+\begin{example}[Round Euclidean spheres]\label{exam:H-1-1}
+    Denote by $S^n_r$ the $n$-sphere of radius $r$ centered at the origin in $\mathbb{R}^{n+1}$ and let $\mathbf{N}(x)=x/\left|x\right|$ denote its unit outward normal vector field. The second fundamental form and mean curvature of $S^n_r$ are given by
+    \begin{equation*}
+        \mathbf{II}=\frac{1}{r}\cdot\mathbf{I}_{S^n_r},\,\,\,\,\,\, H=\frac{n}{r}
+    \end{equation*}
+\end{example}
+
+Indeed for any $V,W\in TS^n_r$, by (\ref{eq:H-1-2}) we should have that
+\begin{align*}
+    \mathbf{II}(V,W)&={(D_V W)}^\bot=\left<D_V\mathbf{N},W\right>\\
+    &=\left<\frac{1}{r}D_V x,W\right>=\frac{1}{r}\left<V,W\right>\\
+    &=\frac{1}{r}\cdot\mathbf{I}_{S^n_r}(V,W)
+\end{align*}
+The orthogonal basis of the tangent space $TS^n_r$ is $\left\{e_1,e_2,\dots,e_n\right\}$ then we know that $g_{ij}$ and $g^{ij}$ are both identify matrix then $\mathrm{L}=\mathbf{II}$. Also, we have that
+\begin{equation*}
+    \mathbf{II}_{ij}=\mathbf{II}(e_i,e_j)=\frac{1}{r}\left<e_i,e_j\right>=\frac{1}{r}\cdot\delta_{ij}
+\end{equation*}
+Thus the mean curvature of $S^n_r$ should be
+\begin{equation*}
+    H=\mathrm{tr}(\mathrm{L})=\frac{1}{r}\cdot\delta_{ij}=\frac{n}{r}
+\end{equation*}
+
+\subsection{The Area and Volume Functional}
+
+Let $A$ be a subset of $\mathbb{R}^{n+1}$, let $m$ be a nonnegative integer, and let $\omega_m$ denote the volume of the $m$-dimentional unit Euclidean ball. For a subset $B\subseteq\mathbb{R}^{n+1}$, let $\mathrm{diam}(B)$ denote the diameter of $B$ and $\mathrm{rad}(B)=(1/2)\cdot\mathrm{diam}(B)$. Given $\delta>0$, define
+\begin{equation*}
+    \mathscr{H}^m_\delta (A)=\inf_{\mathcal{B}}\sum_{B_i\in\mathcal{B}}\omega_m\cdot{\mathrm{rad}}^m (B_i)
+\end{equation*}
+where the infimum is taken over all countable covers $\mathcal{B}=\left\{B_i\right\}$ of $A$ satisfying
+\begin{equation*}
+    \max_{B_i\in\mathcal{B}}\mathrm{diam}(B_i)\le\delta
+\end{equation*}
+Obviously, $\mathscr{H}^m_\delta (A)$ is nonincreasing of $\delta$.
+\begin{definition}[Hausdorff Measure]\label{def:Hausdorff Measure}
+    For any subset $A\subseteq\mathbb{R}^{n+1}$ we define its $m$-dimentional outer Hausdorff measure as follows
+    \begin{equation}
+        \bar{\mathscr{H}}^m (A)=\sup_{\delta>0}\mathscr{H}^m_\delta (A)
+    \end{equation}
+    Particularly, if the limit $\lim_{\delta\to 0}\mathscr{H}^m_\delta (A)$ exists then we say $A$ is $m$-dimentional Hausdorff measurable and define its $m$-dimentional Hausdorff measure as
+    \begin{equation*}
+        \mathscr{H}^m (A)=\lim_{\delta\to 0}\mathscr{H}^m_\delta (A)=\bar{\mathscr{H}}^m (A)
+    \end{equation*}
+\end{definition}
+
+\subsubsection{Basic Concepts}
+
+\begin{definition}[Area]\label{def:Area}
+    The area of a compact subset $K$ of an embedded hypersurface $\mathcal{M}^n\hookrightarrow \mathbb{R}^{n+1}$ is defined as the $n$-dimentional Hausdorff measure on $\mathbb{R}^{n+1}$ of $K$. That is
+    \begin{equation}
+        \mathrm{Area}(K):=\mathscr{H}^n (K)
+    \end{equation}
+\end{definition}
+
+Since it can be proved that the Hausdorff measure $\mathscr{H}^n$ is a regular outer Borel measure of $\mathbb{R}^{n+1}$, then any compact set $K$ is Hausdorff measurable and thus such concept is well-defined.
+
+With the concept of Hausdorff measure we can introduce the concept of Riemannian measure of a Riemannian manifold $(M^n,g)$ as follows, which can help us doing some specific calculation.
+
+\begin{definition}[Riemannian Measure]\label{def:Riemannian Measure}
+    For a Riemannian manifold $(M^n,g)$ we take a locally finite atlas ${\left\{(U_i,\varphi_i)\right\}}_{i\in\mathcal{I}}$ for $M_n$ and subordinate partition of unity ${\left\{\rho_i\right\}}_{i\in\mathcal{I}}$. Then for any compact subset $K\subseteq M^n$ let $\chi_K$ be the indicator function of $K$ and $g_{\varphi_i}$ is the component matrix of $g$ with respect to the chart $\varphi_i$. We define the Riemannian measure of $K$ as
+    \begin{equation}
+        \mu(K)=\sum_{i\in\mathcal{I}}\int_{U_i}\left[\left(\rho_i\cdot\chi_K\right)\circ\varphi^{-1}\right]\cdot\sqrt{\det{g_{\varphi_i}}}\,\,\mathrm{d}\mathscr{H}^n
+    \end{equation}
+\end{definition}
+
+Since compact set is always Hausdorff measurable and it can be proved that such value of the integral is invariant under any choice of the atlas and the partition of unity, then such measure is well-defined. Now with the Riemannian measure we could compute the area of a compact hypersurface as follows
+\begin{lemma}\label{lem:H-2-1}
+    Let $X:M^n\to\mathbb{R}^{n+1}$ be a compact immersed hypersurface then we have
+    \begin{equation}\label{eq:H-2-1}
+        \mathrm{Area}(M)=-\frac{1}{n}\int_M\left<X,\boldsymbol{H}\right>\, \mathrm{d}\mu
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    By the definition of the Laplacian $\Delta$ and the divergence operator we know that
+    \begin{align*}
+        \frac{1}{2}\Delta {\left|X\right|}^2&=\frac{1}{2}\Delta\left<X,X\right>\\
+        &=\frac{1}{2}\cdot\mathrm{div}\left(\left<dX,X\right>+\left<X,dX\right>\right)=\mathrm{div}\left<dX,X\right>
+    \end{align*}
+    From (\ref{eq:H-1-5}) we know that the divergence should satisfy the Leibniz rule, that is
+    \begin{equation*}
+        \mathrm{div}\left<dX,X\right>=\mathrm{tr}\left<dX,dX\right>+\left<\mathrm{div}\left(dX\right)\right>={\left|dX\right|}^2+\left<\mathrm{div}\left(dX\right),X\right>
+    \end{equation*}
+    Since it's well known that $\mathrm{div} (dX)=\boldsymbol{H}$ and
+    \begin{equation*}
+        {\left|dX\right|}^2=g^{ij}\left<dX(\partial_i),dX(\partial_j)\right>=g^{ij}g_{ij}=n
+    \end{equation*}
+    Then we get that
+    \begin{equation*}
+        \frac{1}{2}\Delta {\left|X\right|}^2=\mathrm{div}\left<dX,X\right>=n+\left<\boldsymbol{H},X\right>
+    \end{equation*}
+    Now with the natural definition of the area with Riemannian measure $\mathrm{Area}(M)=\int_M\,\mathrm{d}\mu$ we get that
+    \begin{align*}
+        \mathrm{Area}(M)&=\frac{1}{n}\int_M n\,\mathrm{d}\mu\\
+        &=\frac{1}{n}\int_M \left[\frac{1}{2}\Delta{\left|X\right|}^2-\left<X,\boldsymbol{H}\right>\right]\,\mathrm{d}\mu
+    \end{align*}
+    By the divergence theorem we have
+    \begin{equation*}
+        \int_M\frac{1}{2}\Delta {\left|X\right|}^2\,\mathrm{d}\mu=\int_M\mathrm{div}\left<dX,X\right>\,\mathrm{d}\mu\le\int_{\partial M}\left<dX,\mathbf{N}\right>\,\mathrm{d}\sigma=0
+    \end{equation*}
+    Then we get (\ref{eq:H-2-1}).
+\end{proof}
+
+\newpage
+\subsubsection{First variation of Area and Volume}
+\begin{example}\label{exam:H-F-1}
+    For a surface $M\subseteq\mathbb{R}^3$ parameterized by $X:\Omega\to\mathbb{R}^3$ the first variation of its area functional $A_M$ should be that
+    \begin{equation}\label{eq:H-F-1}
+        \delta A[X,t]=-\int_{M}H\cdot\phi\, \mathrm{d} A
+    \end{equation}
+    where $X_t=X+t\phi\cdot\mathbf{N}$, $\mathrm{d}A=\sqrt{g}\,\mathrm{d}\sigma$, $\mathrm{d}\sigma=\mathrm{d}u\wedge\mathrm{d}v$ and $g=\det{(g_{ij})}$.
+\end{example}
+
+Let $g_{ij}=\left<\partial_i X,\partial_j X\right>$, then we have
+\begin{align*}
+    g^t_{ij}&=\left<\frac{\partial X_t}{\partial u_i},\frac{\partial X_t}{\partial u_j}\right>\\
+    &=\left<\frac{\partial X}{\partial u_i}+t\cdot\left(\phi\frac{\partial\mathbf{N}}{\partial u_i}+\frac{\partial\phi}{\partial u_i}\mathbf{N}\right),\frac{\partial X}{\partial u_j}+t\cdot\left(\phi\frac{\partial\mathbf{N}}{\partial u_j}+\frac{\partial\phi}{\partial u_j}\mathbf{N}\right)\right>\\
+    &=g_{ij}+t\phi\cdot\left(\left<\frac{\partial X}{\partial u_i},\frac{\partial \mathbf{N}}{\partial u_j}\right>+\left<\frac{\partial\mathbf{N}}{\partial u_i},\frac{\partial X}{\partial u_j}\right>\right)+o(t)\\
+    &=g_{ij}-2(t\phi)h_{ij}+o(t)
+\end{align*}
+Thus we could compute ${\left(\mathrm{d}g^t_{ij}/\mathrm{d}t\right)}_{t=0}$ as
+\begin{equation*}
+    {\left.\frac{\mathrm{d}g^t_{ij}}{\mathrm{d}t}\right|}_{t=0}=\lim_{t\to 0}\frac{g^t_{ij}-g_{ij}}{t}=-2\phi\cdot h_{ij}
+\end{equation*}
+Then the derivative of $g_t=\det{(g^t_{ij})}$ is
+\begin{align*}
+    {\left.\frac{\mathrm{d}g_t}{\mathrm{d}t}\right|}_{t=0}&={\left.\frac{\partial g_t}{\partial g^t_{ij}}\cdot\frac{\mathrm{d}g^t_{ij}}{\mathrm{d} t}\right|}_{t=0}\\
+    &=\left(\frac{\partial}{\partial g_{ij}}\sum_{k}g_{ik}G_{ik}\right)\cdot\left(-2\phi\cdot h_{ij}\right)\\
+    &=G_{ij}\cdot\left(-2\phi\cdot h_{ij}\right)={\left(g_{ij}\right)}^*_{ji}\cdot\left(-2\phi\cdot h_{ij}\right)=g\cdot g^{ij}\left(-2\phi\cdot h_{ij}\right)=-2g\left(H\cdot\phi\right)
+\end{align*}
+Finally, by the definition of the first variation we have
+\begin{equation*}
+    \delta A[X,t]={\left.\frac{\mathrm{d}}{\mathrm{d}t}A_{X_t}\right|}_{t=0}={\left.\int_{\Omega}\frac{\mathrm{d}}{\mathrm{d}t}\sqrt{g_t}\right|}_{t=0}\,\mathrm{d\sigma}=-\int_{\Omega}H\cdot\phi\sqrt{g}\,\mathrm{d}\sigma
+\end{equation*}
+and that is (\ref{eq:H-F-1}).

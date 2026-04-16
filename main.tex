@@ -1,0 +1,96 @@
+\documentclass[11pt,twoside]{article}
+\input{preamble}
+
+\titleformat{\section}
+  {\centering\normalfont\Large\bfseries}
+  {\thesection.}
+  {0.5em}
+  {}
+
+% ------------------------------------------------------------------------------
+\begin{document}
+
+% ------------------------------------------------------------------------------
+% Cover Page and ToC
+% ------------------------------------------------------------------------------
+\begin{titlepage}
+
+%%%--------封面标题中的huge可以适当用Large替换，以书写更多内容
+
+\pagestyle{fancy}
+\fancyhf{}
+    \title{ \normalsize \textsc{}
+		\\ [1.75cm]\centerline{\includegraphics[scale=0.45]{img/headflower1.1.jpg}}
+		\HRule{1.5pt} \\
+		\huge \textbf{\textcolor{Blue!90!White}{Extrinsic Geometric Flows}
+		\HRule{2.0pt} \\ [0.4cm] \LARGE{Research Notes}\\\vspace*{0.5\baselineskip}\centerline{\includegraphics[scale=0.15]{img/headflower1.2.png}}\vspace*{2.5\baselineskip}\centerline{\includegraphics[scale=0.23]{img/logo-blue.png}}\vspace*{1\baselineskip}}
+		}
+  
+\author{\textbf{Author: Minixao Wu}\\
+		The Ohio State University \\
+		}
+\date{\today}
+  
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+\pagenumbering{roman}
+\newpage
+
+\input{intro and contents}
+
+%设置主页页脚与页码格式
+
+\newpage
+ % Move the page numberings back to arabic, from roman numerals.
+  \pagenumbering{arabic}
+  % Set the page number to 1.
+  \setcounter{page}{1}
+  \fancyfoot[C]{\includegraphics[width=20.18mm, height=4.5mm]{img/footflower1.1.1.png}\textcolor{lemma}{\textbf{\thepage}}\includegraphics[width=20.18mm, height=4.5mm]{img/footflower1.1.2.png}}
+ %上一行代码控制主页页码的格式，若不想显示全部的页码则只需更改\thepage/\pageref{LastPage}即可
+
+%设置主页页眉(无需页眉可以直接注释)
+
+\pagestyle{fancy}% 设置页眉
+\fancyhead[OL]{\textcolor{lemma}{Minixao Wu}}
+\fancyhead[OR]{\textcolor{lemma}{\leftmark}}
+\fancyhead[EC]{\textcolor{lemma}{Extrinsic Geometric Flows}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection\ #1}{}}
+
+% ------------------------------------------------------------------------------
+
+\input{Sections/Heat Equation.tex}
+\newpage
+\input{Sections/Hypersurfaces in Euclidean Space.tex}
+\newpage
+\input{Sections/Mean Curvature Flow.tex}
+\newpage
+\input{Sections/Valuable Research Direction.tex}
+
+% ------------------------------------------------------------------------------
+% Reference and Cited Works
+% ------------------------------------------------------------------------------
+
+\newpage
+\addcontentsline{toc}{section}{Reference}
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+% ------------------------------------------------------------------------------
+% Appendix
+% ------------------------------------------------------------------------------
+
+\newpage
+%设置附录页页脚格式
+\setcounter{page}{1}
+\fancyfoot[C]{- \thepage\space-}
+\pagenumbering{roman}
+\appendix
+\section{Appendix of code and algorithm}
+\subsection{code blocks}
+\input{Sections/appendix 1.tex}
+
+% ------------------------------------------------------------------------------
+
+\end{document}

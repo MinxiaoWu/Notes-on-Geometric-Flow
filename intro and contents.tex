@@ -1,0 +1,43 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           Contents and Introductions                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 如果不需要引言部分，则直接把7-34删掉
+
+% Force a new page.
+\newcommand\forcenewpage{\clearpage\mbox{~}\clearpage\newpage}
+\pagestyle{fancy}
+\fancyhead{} % 清除页眉页脚的默认设置
+\renewcommand{\headrulewidth}{0pt} % 清除页眉的横线
+\renewcommand{\footrulewidth}{0pt} % 清除页脚的横线
+
+
+ 
+
+\begin{center}
+    \color{partcolor}
+	\raisebox{1ex}{\pgfornament[scale = .2]{79}}\hspace*{10pt}\textbf{\LARGE Introduction}\hspace*{13pt}\raisebox{1ex}{\pgfornament[scale = .2, symmetry=v]{79}}\\[13pt]
+    \pgfornament[scale = .3]{88}
+\end{center}
+
+Lecture notes from the YEAR undergraduate course TITLE, given by professor
+PROFESSOR at the FACULTY at LOCATION in the academic year ACADEMIC YEAR. This
+course covers COVERS. Credit for the material in these notes is due to professor
+PROFESSOR, while the structure is loosely taken from the LOCATION. The credit
+for the typesetting is my own.
+
+% 引言落款
+\begin{flushright}
+	Minxiao Wu \\
+	2023/05/20 15:59:16
+\end{flushright}
+
+\pagenumbering{Roman}
+
+\newpage
+   \setcounter{page}{1}
+    \fancyfoot[C]{\includegraphics[scale=0.14]{img/footflower1.2.png}\hspace{7pt}\thepage\hspace{7pt}\includegraphics[scale=0.14]{img/footflower1.2.1.png}}
+
+   \pagenumbering{roman}
+
+\tableofcontents

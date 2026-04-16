@@ -1,0 +1,354 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                Basic Packages                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[hmargin=2.6cm]{geometry} %内部数值更改页边距
+\usepackage{float}
+\usepackage[colorlinks=true, citecolor=blue, linkcolor=blue, urlcolor=blue]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{framed}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+\usepackage{indentfirst}
+\usepackage{tikz}
+\usepackage{color}
+\usepackage{pifont}
+\usepackage{listings}
+\usepackage{pdfpages}
+\usepackage{enumerate}
+\usepackage{mathrsfs}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{layout}
+\usepackage{lastpage}
+\usepackage{fontawesome}
+\usepackage{adjustbox}
+\usepackage[ruled,longend,linesnumbered]{algorithm2e}
+\usepackage{cite}
+\usepackage{lipsum}
+\usepackage{commutative-diagrams}
+\usepackage{appendix}
+\usepackage{pgfornament}
+\usepackage{pgfplots}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usetikzlibrary{shadows}
+
+\tcbuselibrary{many}
+
+\colorlet{LightGray}{White!90!Periwinkle}
+\colorlet{LightOrange}{Orange!15}
+\colorlet{LightGreen}{Green!15}
+\colorlet{White}{White!}
+
+\definecolor{mygreen}{RGB}{56, 140, 70}
+\definecolor{mypurple}{RGB}{197, 92, 212}
+\definecolor{nordAurora1}{HTML}{BF616A}
+\definecolor{lemma}{HTML}{983b0f}
+\definecolor{prop}{HTML}{191971}
+\definecolor{definition}{HTML}{88D6D1}
+\definecolor{myblue}{RGB}{0,127,255}
+\definecolor{blue2}{HTML}{99ebff}
+\definecolor{lightergray}{gray}{0.99}
+\definecolor{main}{RGB}{0,166,82}
+\definecolor{third}{RGB}{0,174,247}
+\definecolor{partcolor}{HTML}{3352cc}
+
+\colorlet{example}{mygreen!85!black}
+\colorlet{claim}{mypurple!90!black}
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\solutionname}{Solution}
+
+\declaretheoremstyle[name=\colorbox{Orange!80}{\textcolor{White}{Theorem}},
+headfont=\bfseries\color{Orange!90},
+bodyfont=\itshape,]{thm}
+\declaretheorem[style=thm,numberwithin=section]{theorem}
+\tcolorboxenvironment{theorem}{breakable,
+colback=LightOrange!85,
+colframe=Orange!80}
+
+\declaretheoremstyle[name=\textcolor{lemma}{Lemma},
+headfont=\bfseries\color{lemma},
+bodyfont=\itshape,]{lem}
+\declaretheorem[style=lem,numberwithin=section]{lemma}
+\tcolorboxenvironment{lemma}{breakable,
+colback=LightOrange!37,
+colframe=lemma}
+
+\declaretheoremstyle[name=\colorbox{myblue}{\textcolor{White}{Definition}},
+headfont=\bfseries\color{myblue},
+bodyfont=\itshape,]{def}
+\declaretheorem[style=def,numberwithin=section]{definition}
+\tcolorboxenvironment{definition}{breakable,
+colback=blue2!50,
+colframe=myblue}
+
+\declaretheoremstyle[name=\colorbox{mygreen!100!black}{\textcolor{White}{Corollary}},
+headfont=\bfseries\color{mygreen!100!black},
+bodyfont=\itshape,]{coro}
+\declaretheorem[style=coro,numberwithin=section]{corollary}
+\tcolorboxenvironment{corollary}{breakable,
+colback=LightGreen!65,
+colframe=mygreen!100!black}
+
+\declaretheoremstyle[name=\textcolor{prop}{Proposition},
+headfont=\bfseries\color{prop},
+bodyfont=\itshape,]{pro}
+\declaretheorem[style=pro,numberwithin=section]{proposition}
+\tcolorboxenvironment{proposition}{breakable,
+colback=LightGray,
+colframe=prop}
+
+\declaretheoremstyle[name=\colorbox{claim}{\textcolor{White}{Claim}},
+headfont=\bfseries\color{claim},
+bodyfont=\itshape,]{claim}
+\declaretheorem[style=claim,numberwithin=section]{claim}
+\tcolorboxenvironment{claim}{breakable,
+colback=nordAurora1!11!White,
+colframe=claim}
+
+\declaretheoremstyle[name=\textcolor{red}{Problem},
+headfont=\bfseries\color{red},
+bodyfont=\upshape,]{problem}
+\declaretheorem[style=problem,numberwithin=section]{problem}
+\tcolorboxenvironment{problem}{breakable,
+colback=White}
+
+\declaretheoremstyle[name=\textcolor{red}{Question},
+headfont=\bfseries\color{red},
+bodyfont=\upshape,]{que}
+\declaretheorem[style=que,numberwithin=section]{question}
+\tcolorboxenvironment{question}{breakable,
+colback=White}
+
+
+\declaretheoremstyle[name=\textcolor{example}{Example},
+headfont=\bfseries\color{example},
+bodyfont=\upshape,]{exm}
+\declaretheorem[style=exm,numberwithin=section]{example}
+\tcolorboxenvironment{example}{breakable,
+colback=LightGreen!65,
+colframe=example}
+
+\let\proof\relax
+\let\endproof\relax
+\newenvironment{proof}{
+  \par
+  \vspace{.5\baselineskip}
+  \noindent\textbf{\color{Orange!90!black} Proof.\;}
+  \color{black!88}
+}{
+  \hfill$\blacksquare$\quad
+  \par\vspace{.5\baselineskip}
+}
+
+\newenvironment{solution}{\par\vspace{.5\baselineskip}\noindent\textbf{\color{main}\solutionname:} \itshape}{\color{main}\hfill\ding{118}\par\vspace{.5\baselineskip}}
+
+\newenvironment{remark}{\par\vspace{.5\baselineskip}\noindent\textbf{\color{Orange!90!black}Remark.\;}}{\par\vspace{.5\baselineskip}}
+
+\newenvironment{lanse}{
+  \begin{tcolorbox}[enhanced, colback=LightOrange!30, boxrule=0pt, frame hidden, breakable,
+  borderline west={0.7mm}{0.1mm}{lemma}]
+}{\end{tcolorbox}}
+\newtheorem*{notationev}{\color{lemma} Notation}
+\newenvironment{notation}{\begin{lanse}\begin{notationev}}{\hfill\ding{45}\end{notationev}\end{lanse}}
+
+\newenvironment{exer}{
+  \begin{tcolorbox}[enhanced, colback=LightGreen!65, boxrule=0pt, frame hidden, breakable,
+  borderline west={0.7mm}{0.1mm}{example}]
+}{\end{tcolorbox}}
+\newtheorem{exerciseev}{\color{example} Exercise}[section]
+\newenvironment{exercise}{\begin{exer}\begin{exerciseev}}{\end{exerciseev}\end{exer}}
+
+\newcounter{property}[section]
+\renewcommand{\theproperty}{\thesection.\arabic{property}}
+
+\newenvironment{property}{\refstepcounter{property}\par\vspace{.5\baselineskip}\noindent\textbf{\color{third} Property \theproperty} \itshape}{\color{third}\hfill\ding{168}\par\vspace{.5\baselineskip}}
+
+% 猜想环境
+\newcounter{conj}[section]
+\setcounter{conj}{0}
+\renewcommand{\theconj}{\thesection.\arabic{conj}}
+
+\newtcolorbox{conjbox}[3][]{%
+    arc=0mm,
+    breakable,drop fuzzy shadow=black!20!white,
+    enhanced,
+    colback=lightergray,%main!3
+    boxrule=0pt,
+    top=8mm, %分隔垂直-开始文本
+    % enlarge top by=\baselineskip/2+1mm,
+    % enlarge top at break by=0mm,pad at break=2mm,
+    fontupper=\normalsize,
+    step and label={conj}{#3},%标签
+    overlay unbroken = {%
+        %垂直线段%更改有效
+        %\draw[color=gray!5,line width=3pt] ([xshift=2pt] frame.north west)--([xshift=2pt] frame.south west);
+        %底部装饰矩形%更改有效
+        \fill[fill=red!80!black] (.9\textwidth,0.2cm) rectangle (\textwidth,-0.0cm);
+        % 图像框示例
+        %\node[rectangle,
+        %         text=black, ,fill=ALamarillo!20,
+        %         inner sep=1mm,anchor=west,font=\small\bf\sffamily] at ([xshift=-10.3pt,yshift=-3.2mm]frame.north west)%
+        %{ };
+        %框编号和描述%更改有效
+        \node[rectangle, %opacity=.3,
+        text=black, drop shadow={opacity=.3, shadow xshift=0.1cm},
+        inner sep=1.5mm,fill=red!80!black,
+        anchor=west,
+        font=\normalsize] at ([xshift=0cm,yshift=-3.mm]frame.north west)%
+        {\bfseries  \color{white}Conjecture \theconj~#2};%标题
+    },
+    % fin overlay
+    overlay first  = {%
+        %标题框编号和描述%跨页时生效
+        \node[rectangle, %opacity=.3,
+        text=black, drop shadow={opacity=.3, shadow xshift=0.1cm},
+        inner sep=1.5mm,fill=Emerald,
+        anchor=west,
+        font=\normalsize] at ([xshift=0cm,yshift=-3.mm]frame.north west)%
+        {\bf \color{white} Conjecture \theconj.~#2};
+    },
+    % overlay
+    %边缘改变%跨页时生效
+    overlay middle={\draw[color=lightergray,line width=3pt] ([xshift=3pt] frame.north west)-- ([xshift=2pt] frame.south west);
+    },
+    overlay last={\draw[color=lightergray,line width=3pt] ([xshift=3pt] frame.north west)-- ([xshift=2pt] frame.south west);
+        %底部装饰矩形%跨页时生效
+        \fill[fill=red!80!black] (.9\textwidth,0.2cm) rectangle (\textwidth,-0.0cm); }
+    #1
+}
+
+\NewDocumentEnvironment{conjecture}{O{} O{} O{}}{\smallskip\begin{conjbox}{#1}{#2}%
+        #3}{\end{conjbox} }
+
+%悖论环境
+\newcounter{Para}[section]
+\setcounter{Para}{0}
+\renewcommand{\thePara}{\thesection.\arabic{Para}}
+
+\newtcolorbox{parabox}[3][]{%
+    arc=0mm,
+    breakable,drop fuzzy shadow=black!20!white,
+    enhanced,
+    colback=lightergray,%main!3
+    boxrule=0pt,
+    top=8mm, %分隔垂直-开始文本
+    % enlarge top by=\baselineskip/2+1mm,
+    % enlarge top at break by=0mm,pad at break=2mm,
+    fontupper=\normalsize,
+    step and label={Para}{#3},%标签
+    overlay unbroken = {%
+        %垂直线段%更改有效
+        %\draw[color=gray!5,line width=3pt] ([xshift=2pt] frame.north west)--([xshift=2pt] frame.south west);
+        %底部装饰矩形%更改有效
+        \fill[fill=red!80!black] (.9\textwidth,0.2cm) rectangle (\textwidth,-0.0cm);
+        % 图像框示例
+        %\node[rectangle,
+        %         text=black, ,fill=ALamarillo!20,
+        %         inner sep=1mm,anchor=west,font=\small\bf\sffamily] at ([xshift=-10.3pt,yshift=-3.2mm]frame.north west)%
+        %{ };
+        %框编号和描述%更改有效
+        \node[rectangle, %opacity=.3,
+        text=black, drop shadow={opacity=.3, shadow xshift=0.1cm},
+        inner sep=1.5mm,fill=red!80!black,
+        anchor=west,
+        font=\normalsize] at ([xshift=0cm,yshift=-3.mm]frame.north west)%
+        {\bfseries  \color{white}Paradox \thePara~#2};%标题
+    },
+    % fin overlay
+    overlay first  = {%
+        %标题框编号和描述%跨页时生效
+        \node[rectangle, %opacity=.3,
+        text=black, drop shadow={opacity=.3, shadow xshift=0.1cm},
+        inner sep=1.5mm,fill=Emerald,
+        anchor=west,
+        font=\normalsize] at ([xshift=0cm,yshift=-3.mm]frame.north west)%
+        {\bf \color{white} Paradox \thePara.~#2};
+    },
+    % overlay
+    %边缘改变%跨页时生效
+    overlay middle={\draw[color=lightergray,line width=3pt] ([xshift=3pt] frame.north west)-- ([xshift=2pt] frame.south west);
+    },
+    overlay last={\draw[color=lightergray,line width=3pt] ([xshift=3pt] frame.north west)-- ([xshift=2pt] frame.south west);
+        %底部装饰矩形%跨页时生效
+        \fill[fill=red!80!black] (.9\textwidth,0.2cm) rectangle (\textwidth,-0.0cm); }
+    #1
+}
+
+\NewDocumentEnvironment{paradox}{O{} O{} O{}}{\smallskip\begin{parabox}{#1}{#2}%
+        #3}{\end{parabox} }
+
+\setstretch{1.2}
+\geometry{
+    hmargin= 2.5cm,
+    textheight=9in,
+    top=1in,
+    headheight=14pt,
+    headsep=25pt,
+    footskip=30pt
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                 Environments                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareStringOption[Blue]{color}
+\DeclareVoidOption{green}{\ekv{color=green}}
+\DeclareVoidOption{cyan}{\ekv{color=cyan}}
+\DeclareVoidOption{Blue}{\ekv{color=Blue}}
+\DeclareVoidOption{sakura}{\ekv{color=sakura}}
+\DeclareVoidOption{black}{\ekv{color=black}}
+\DeclareVoidOption{brown}{\ekv{color=brown}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                 Code blocks                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstset{backgroundcolor = \color{LightOrange!20},
+rulesepcolor=\color{red!20!green!20!blue!20},
+showspaces=false,
+showstringspaces=false,}
+\lstdefinestyle{lfonts}{
+  basicstyle   = \small\ttfamily,
+  stringstyle  = \color{green!70!black},
+  keywordstyle = \color{blue!68!white}\bfseries,
+  commentstyle = \color{olive},
+}
+\lstdefinestyle{lnumbers}{
+  numbers     = left,
+  numberstyle = \tiny,
+  numbersep   = 2em,
+  firstnumber = 1,
+  stepnumber  = 1,
+}
+\lstdefinestyle{llayout}{
+  breaklines       = true,
+  tabsize          = 4,
+  columns          = flexible,
+}
+\lstdefinestyle{lgeometry}{
+  xleftmargin      = 20pt,
+  xrightmargin     = 0pt,
+  frame            = shadowbox,
+  framesep         = \fboxsep,
+  framexleftmargin = 20pt,
+}
+\lstdefinestyle{lgeneral}{
+  style = lfonts,
+  style = lnumbers,
+  style = llayout,
+  style = lgeometry,
+}
+\lstdefinestyle{python}{
+    language = {Python},
+    style    = lgeneral,
+}

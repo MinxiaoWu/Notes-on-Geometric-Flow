@@ -1,0 +1,19 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Heat Equation}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Gradient Flow}{1}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Hypersurfaces in Euclidean Space}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Mean Curvature}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The Area and Volume Functional}{9}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Basic Concepts}{10}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}First variation of Area and Volume}{12}{subsubsection.2.2.2}%
+\contentsline {section}{\numberline {3}Mean Curvature Flow}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Minimal Surface Problem}{15}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Isoperimetric Problem}{17}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Self-similar Solutions}{17}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Valuable Research Directions}{18}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Generalizing Isoperimetric Inequality}{18}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Review the Proof of the Multiplicity-One Conjecture and Try to Prove The Smale Conjecture}{18}{subsection.4.2}%
+\contentsline {section}{Reference}{19}{subsection.4.2}%
+\contentsline {section}{\numberline {A}Appendix of code and algorithm}{i}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}code blocks}{i}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Algorithm}{i}{subsection.A.2}%

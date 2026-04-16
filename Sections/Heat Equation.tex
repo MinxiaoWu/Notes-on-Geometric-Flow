@@ -1,0 +1,50 @@
+\section{Heat Equation}
+
+The heat equation originated from Joseph Fourier's research on the theory of heat in 1807. He concluded that the heat change and heat transfer (heat flux $\boldsymbol{q}$) of a closed system must satisfy the following two laws:
+\begin{enumerate}[i.]
+    \item \textit{The heat flux is
+proportional to the negative temperature gradient}.
+\begin{equation*}
+    \boldsymbol{q}=-\nabla u
+\end{equation*}
+    \item \textit{The heat energy $Q(\Omega,t)$ of a Euclidean domain $\Omega\subseteq\mathbb{R}^n$ at the time $t$ can only
+be gained or lost via flux through its boundary.}
+\begin{equation*}
+    Q(\Omega,t_1)-Q(\Omega,t_2)=-\int_{t_1}^{t_2}\int_{\partial\Omega}\left<\boldsymbol{q},\boldsymbol{n}\right>\,\mathrm{d}A\mathrm{d}t
+\end{equation*}
+\end{enumerate}
+where $u=u(\boldsymbol{x},t)$ is the temperature at the point $\boldsymbol{x}\in\Omega$. By these two laws we can get a partial differential equation as below, which is called the heat equation
+\begin{equation}\label{H-0-1}
+    \partial_t u-\Delta u=0
+\end{equation}
+where $\Delta u=\mathrm{div}(\nabla u)$.
+
+\subsection{Gradient Flow}
+
+We say that a closed system reaches thermal equilibrium when there is no longer any change in heat, which corresponds to $\partial_t u=0$, and that implies that
+\begin{equation*}
+    -\Delta u=0
+\end{equation*}
+The solution of this equation is called the harmonic function. Now we define the Dirichlet Energy of the temperature function $u(\boldsymbol{x},t)$ as $E(u)=(1/2)\int_\Omega{\left|\nabla u\right|}^2\mathrm{d}\mu$ it is a potential energy function. Then its stationary point is exactly the temperature function that satisfies thermal equilibrium conditions. Indeed, if $U\in C^\infty[\Omega\times(-\epsilon,\epsilon)]$ is a smooth variation of $u$ with $u$ outside a compact set, then, setting $\varphi(\boldsymbol{x})=\partial_t\mid_{t=0}U$ we find that
+\begin{equation*}
+    \left.\frac{\mathrm{d}E(U)}{\mathrm{d}t}\right|_{t=0}=\int_{\Omega}\nabla\varphi\cdot\nabla u\, \mathrm{d}\mu=-\int_\Omega\varphi\Delta u\,\mathrm{d}\mu
+\end{equation*}
+
+This calculation also shows that the heat equation is a \textbf{Gradient Flow} of the Dirichlet Energy: As a system spontaneously evolves towards an equilibrium state, its energy function $E(u)$ will inevitably gradually minimize along the gradient direction, and the final point of this process is the equilibrium point, or the stationary point of $E(u)$.
+
+Therefore, gradient flow is actually a trend, an evolutionary process of a system, in which the system's energy function $E(u)$ gradually decreases with time along the negative gradient direction. This flow can usually be described by a partial differential equation, and each solution is a characterization of a certain state of the system satisfying this evolutionary trend under different initial conditions (a function of time $t$). This leads to our rigorous definition of gradient flow.
+
+\begin{definition}[Gradient Flow]\label{def:Gradient Flow}
+    Gradient flow is an evolutionary trend of a dynamic system. In this process, the system's energy function $E\in C^\infty$ gradually decreases with time along the negative gradient direction, which is characterized by the initial value problem of the following partial differential equation.
+    \begin{equation}
+        \begin{cases}
+            u^\prime_t=-\nabla E(u), &t>0\\
+            u(\boldsymbol{x},0)=u_0(\boldsymbol{x})
+        \end{cases}
+    \end{equation}
+    It's solution is called a gradient flow curve.
+\end{definition}
+
+From this, we can extend the concept of geometric flow, which is also a mode of evolution that can be described by some partial differential equations. However, this mode of evolution operates on geometric objects (such as curves, surfaces, and manifolds) rather than dynamic systems. The energy function driving this evolution is certain geometric quantities (such as area, arc length of curves, and curvature). Under this trend, these geometric bodies evolve (deform) in the direction that minimizes these geometric quantities. Everything we will discuss thereafter revolves around this concept.
+
+Geometric flows are further divided into external curvature flows and internal curvature flows. External curvature flows are characterized by a submanifold evolving in an ambient space, with velocity determined by its extrinsic curvature. This is the focus of our discussion. Internal curvature flows, on the other hand, are mathematical evolutions of a Riemannian metric (the shape of a manifold) that depend only on the internal geometry, not on how it is embedded in higher-dimensional space.

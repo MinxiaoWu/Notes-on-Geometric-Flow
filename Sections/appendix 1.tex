@@ -1,0 +1,37 @@
+\begin{lstlisting}[style=python]
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from scipy.integrate import odeint
+
+""test""
+a=torch.tensor([[6,2,3],[3,4,5],[2,7,4],[5,2,0]])
+b=torch.tensor([1,2,3,4])
+b=b.unsqueeze(1)          # the text message
+c=b*a
+d=torch.tensor([1.0, 1.2, 1.5])
+f=d+a
+e1=f[:,1].unsqueeze(1)
+Ar = np.array([[1,2,3],[4,5,6],[7,8,9]])
+ar = torch.from_numpy(Ar)
+print(Ar)
+print(ar)
+\end{lstlisting}
+
+\subsection{Algorithm}
+
+\begin{algorithm}
+\caption{Simulation-optimization heuristic}\label{algorithm}
+\KwData{current period $t$, initial inventory $I_{t-1}$, initial capital $B_{t-1}$, demand samples}
+\KwResult{Optimal order quantity $Q^{\ast}_{t}$}
+$r\leftarrow t$\;
+$\Delta B^{\ast}\leftarrow -\infty$\;
+\While{$\Delta B\leq \Delta B^{\ast}$ and $r\leq T$}{$Q\leftarrow\arg\max_{Q\geq 0}\Delta B^{Q}_{t,r}(I_{t-1},B_{t-1})$\;
+$\Delta B\leftarrow \Delta B^{Q}_{t,r}(I_{t-1},B_{t-1})/(r-t+1)$\;
+\If{$\Delta B\geq \Delta B^{\ast}$}{$Q^{\ast}\leftarrow Q$\;
+$\Delta B^{\ast}\leftarrow \Delta B$\;}
+$r\leftarrow r+1$\;}
+\end{algorithm}

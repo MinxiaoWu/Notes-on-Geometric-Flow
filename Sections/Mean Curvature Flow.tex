@@ -1,0 +1,178 @@
+\section{Mean Curvature Flow}
+
+The mean curvature flow is (after choosing an appropriate `gauge') a parabolic equation, with the minimal surface equation as its static case and elliptic counterpart. Its linear analogue is the heat equation, with its elliptic counterpart being the Laplace equation.
+
+\begin{definition}[Mean Curvature Flow]\label{def:Mean Curvature Flow}
+    A smooth 1-parameter family of immersions $X:M^n\times I\to\mathbb{R}^{n+1}$ satisfies the mean curvature flow if
+    \begin{equation}\label{eq:M-0-1}
+        \partial_t X(\boldsymbol{x},t)=\boldsymbol{H}(\boldsymbol{x},t),\,\,\,\,\,\,\,\forall (\boldsymbol{x},t)\in M^n\times\left[0,T\right)
+    \end{equation}
+    where $\boldsymbol{H}$ denotes the mean curvature vector of the family.
+\end{definition}
+
+We say that $X:M\times I\to\mathbb{R}^{n+1}$ is a solution of \textbf{reparametrized mean curvature
+flow} if
+\begin{equation*}
+    {\left[\partial_t X(\boldsymbol{x},t)\right]}^{\bot}=\boldsymbol{H}(\boldsymbol{x},t)
+\end{equation*}
+In this case, the vector field
+\begin{equation*}
+    V(\boldsymbol{x},t):={\left[\partial_t X(\boldsymbol{x},t)\right]}^{\bot}-\partial_t X(\boldsymbol{x},t)
+\end{equation*}
+is tangential. Defining the 1-parameter family of self-diffeomorphisms $\varphi_t:M\to M$ by
+\begin{equation}\label{eq:M-0-2}
+    \begin{cases}
+        \partial_t\varphi_t(\boldsymbol{x})=dX^{-1}_t[V(\varphi_t(\boldsymbol{x}),t)],\\
+        \varphi_0=\mathrm{id}_M
+    \end{cases}
+\end{equation}
+and let $\hat{X}_t=X_t\circ\varphi_t$. Then we claim that $\hat{X}$ is a solution of the mean curvature flow (\ref{eq:M-0-1}). This is because
+\begin{align*}
+    \partial_t\hat{X}(\boldsymbol{x},t)&=\left[\frac{\partial}{\partial\boldsymbol{x}}X_t,\frac{\partial}{\partial t}X_t\right]\cdot\left[\begin{array}{c}
+        \partial_t\varphi_t(\boldsymbol{x})\\
+        \partial_t t
+    \end{array}\right]=dX_t(\varphi_t)\cdot\partial_t\varphi_t(\boldsymbol{x})+\partial_t X_t(\varphi_t)
+\end{align*}
+Combined with (\ref{eq:M-0-2}) and the relationship between differentiation and the action of tangent vectors, we can obtain that
+\begin{align*}
+    dX_t(\varphi_t)\cdot\partial_t\varphi_t(\boldsymbol{x})&=dX_t[dX^{-1}_t[V(\varphi_t,t)]]\\
+    &=V(\varphi_t,t)={\left[\partial_t X(\varphi_t,t)\right]}^{\bot}-\partial_t X(\varphi_t,t)
+\end{align*}
+Hence, by the condition of the reparametrized mean curvature flow we have that
+\begin{equation*}
+    \partial_t \hat{X}(\boldsymbol{x},t)={\left[\partial_t X(\varphi_t,t)\right]}^{\bot}=\boldsymbol{H}(\varphi_t,t)=\boldsymbol{H}_{\hat{X}}(\boldsymbol{x},t)
+\end{equation*}
+
+A much easier solution of the MCF (Mean Curvature Flow) is the following shrinking round sphere. Denote by $S^n_r\subseteq\mathbb{R}^{n+1}$ the $n$-sphere of radius $r>0$ centered at the origin. Set $\mathcal{M}_0=S^n_{r_0}$ where $r_0>0$. We seek a solution of a family of $n$-sphere to mean curvature flow, starting at $\mathcal{M}_0$. Then let $\mathcal{M}_t=S^n_{r(t)}$, it can naturally parameterized by an embedding $X_t:S^n_1\hookrightarrow $ as
+\begin{equation*}
+    X_t:\boldsymbol{x}\mapsto r(t)\cdot\boldsymbol{x}
+\end{equation*}
+Then by Example.\ref{exam:H-1-1} we could calculate its mean curvature and $\partial_t X(\boldsymbol{x},t)$ as
+\begin{equation*}
+    \boldsymbol{H}=-H(\boldsymbol{x},t)\cdot\mathbf{N}(\boldsymbol{x},t)=-n\frac{\boldsymbol{x}}{r(t)},\,\,\,\, \partial_t X(\boldsymbol{x},t)=\frac{\mathrm{d}r(t)}{\mathrm{d}t}\boldsymbol{x}
+\end{equation*}
+Then the MCF (\ref{eq:M-0-1}) relates to an ODE
+\begin{equation*}
+    \frac{\mathrm{d}r(t)}{\mathrm{d}t}=-\frac{n}{r(t)}
+\end{equation*}
+One can solve this equation with initial value $r(0)=r_0$ as
+\begin{equation*}
+    r(t)=\sqrt{r^2_0-2nt}
+\end{equation*}
+Then we have
+\begin{equation*}
+    X_t(\boldsymbol{x})=\boldsymbol{x}\cdot\sqrt{r^2_0-2nt}
+\end{equation*}
+Which means that the sphere in such family would shrink to a point for $t\in (-\infty,r^2_0/2n)$
+
+Recall that a minimal hypersurface $\mathcal{M}^n\subseteq\mathbb{R}^{n+1}$ is a hypersurface satisfying $H\equiv 0$. Given a minimal surface $\mathcal{M}^n_0$ its clear that $\mathcal{M}_t\equiv\mathcal{M}_0$ is a solution of the mean curvature flow. In the following section we will discuss it specifically.
+
+We claim that if ${\mathcal{M}^{n-m}_t}$ is a solution to mean curvature flow in $\mathbb{R}^{n-m+1}$, then the family of product hypersurfaces
+\begin{equation*}
+    \mathcal{M}^n_t :=\mathcal{M}^{n-m}_t\times\mathbb{R}^m\subseteq\mathbb{R}^{n+1}
+\end{equation*}
+should be a solution to mean curvature flow in $\mathbb{R}^{n+1}$ which is called the cylinder over a solution. To see this let the immersion over $\mathcal{M}^{n-m}_t$ be $X^\prime(\boldsymbol{x},t)$ which satisfies that
+\begin{equation*}
+    \partial_t X^\prime(\boldsymbol{x},t)=\boldsymbol{H}_{n-m}
+\end{equation*}
+Then let the immersion $X:\mathcal{M}^n_t\to\mathbb{R}^{n+1}$ be defined as $X(\boldsymbol{x},\boldsymbol{y},t)=(X^\prime(\boldsymbol{x},t),\boldsymbol{y})$. Let $\partial/\partial x_i, i=1,2,\dots,n-m$ denote the linearly independent tangent vectors of $\mathcal{M}^{n-m}_t$ and $\partial/\partial y_j, j=1,2,\dots,m$ denote the tangent vector in $\mathbb{R}^m$. Thus we have
+\begin{equation*}
+    g^X_{ij}=\left[\begin{matrix}
+        g^{X^\prime}_{i_1 j_1}(\boldsymbol{x},t)&    0\\
+        0&    \delta_{i_2 j_2}\\
+    \end{matrix}\right]
+\end{equation*}
+where $\delta_{i_2 j_2}=1$ if and only if $i_2=j_2$ and $g^{X^\prime}_{i_1 j_1}(\boldsymbol{x},t)$ is the first fundamental form of $\mathcal{M}^{n-m}_t$ over $X^\prime$. With this its easy to verify that the second fundamental form of $\mathcal{M}^n_t$ should be
+\begin{equation*}
+    \mathbf{II}=h^X_{ij}=\left[
+        \begin{matrix}
+            h^{X^\prime}_{i_1,j_1}(\boldsymbol{x},t)&    0\\
+            0&   0\\
+        \end{matrix}
+    \right]
+\end{equation*}
+Hence we can get that
+\begin{equation*}
+    \boldsymbol{H}_{n}=-g^{ij}_X\cdot h^X_{ij}=\left(\boldsymbol{H}_{n-m},0\right)
+\end{equation*}
+Therefore, we deduce that
+\begin{equation*}
+    \frac{\partial}{\partial t}X(\boldsymbol{x},\boldsymbol{y},t)=\left(\partial_t X^\prime (\boldsymbol{x},t),0 \right)=(\boldsymbol{H}_{n-m},0)=\boldsymbol{H}_n
+\end{equation*}
+
+\subsection{Minimal Surface Problem}
+Now, let us briefly review the origins of the concept of mean curvature flow. First and formost, let's consider a natural problem as follows, which is called \textbf{Minimal Surface Problem}. In $\mathbb{R}^3$, it can be expressed as:
+\begin{problem}[Plateau]\label{prob:Plateau}
+    Given a closed curve $\Gamma\in\mathbb{R}^3$, find a surface $M$ with boundary $\Gamma$ such that its area is minimal among all surfaces bounded by $\Gamma$. 
+\end{problem}
+
+To find such surface $M$ let it be parameterized by $X:\Omega\to\mathbb{R}^3$ where the parameters $(u,v)\subseteq\Omega$ and $X\mid_{\partial\Omega}=\Gamma$ then its area can be written as
+\begin{equation*}
+    A_M=\int_\Omega\left|X_u\times X_v\right|\,\mathrm{d}u\,\mathrm{d}v=\int_{\Omega}\sqrt{EG-F^2}\, \mathrm{d}\sigma
+\end{equation*}
+where $\mathrm{d}\sigma=\mathrm{d}u\wedge\mathrm{d}v$ and $E=\left<X_{u},X_u\right>$, $F=\left<X_u,X_v\right>$, $G=\left<X_v,X_v\right>$. Then consider a deformation $X_t=X(u,v,t)=X+t\phi\cdot\mathbf{N}$ where $\phi$ is a compact support function $\phi:\Omega\to\mathbb{R}$ such that $\phi\mid_{\partial\Omega}=0$ and $\mathbb{N}$ is the unit normal vector field of $M$. Then we know the first order variation of it should be
+\begin{equation*}
+    \delta(A_{X_t})={\left.\frac{\mathrm{d}}{\mathrm{d}t}A_{X_t}\right|}_{t=0}=-\int_{\Omega}H\cdot\phi\sqrt{g}\,\mathrm{d}\sigma=-\int_M H\cdot\phi\,\mathrm{d}A
+\end{equation*}
+Under the inner product $\left<f,g\right>=\int_{M}f\cdot g\,\mathrm{d}A$ in $L^2(M)$ we know that
+\begin{equation*}
+    \left<-H,\phi\right>=\delta\left(A_{X_t}\right)=\left<\nabla A,\phi\right>
+\end{equation*}
+Which shows $\nabla A=-H$. Thus the mean curvature flow of any $X:\Omega\times I\to\mathbb{R}^3$
+\begin{equation*}
+    \begin{cases}
+        \partial_t X(u,v,t)=\boldsymbol{H}=H\cdot\mathbf{N}=-\nabla A\\
+        X\mid_{\partial\Omega}(u,v,t)=\Gamma, &\forall\, (u,v)\in\Omega, t\in I\\
+    \end{cases}
+\end{equation*}
+represent a family of surfaces bounded by $\Gamma$ such that their area decreased. Since $M$ is the minimal surface, then by Fermat lemma its area variation should always be zero, that is
+\begin{equation*}
+    \delta(A_{X_t})=\left<\nabla A,\phi\right>\equiv 0,\,\,\, \forall\phi
+\end{equation*}
+It implies that $\nabla A=-H\cdot\mathbf{N}\equiv 0$, then $H\equiv 0$. Thus, each minimal surface should necessarily be a stable point of a mean curvature flow. Particularly, in $\mathbb{R}^3$ we have that
+\begin{equation*}
+    H=\mathrm{tr}(\mathrm{L})=\mathrm{tr}(g^{ij}\cdot h_{ij})=\frac{EN-2FM+GL}{EG-F^2}
+\end{equation*}
+where $L=\left<X_{uu},\mathbf{N}\right>$, $M=\left<X_{uv},\mathbf{N}\right>$, $N=\left<X_{vv},\mathbf{N}\right>$. Then by $H=0$ we can deduce the equation of a minimal surface $z=f(x,y)$ with the boundary $\Gamma: I\to\mathbb{R}^3$ should be
+\begin{equation}\label{eq:M-1-1}
+    \begin{cases}
+        {\left[1+{(f^\prime_y)}^2\right]}f_{x}^{''}-2f^\prime_x f^\prime_y f^{''}_{xy}+{\left[1+{(f^\prime_x)}^2\right]}f^{''}_{yy}=0\\
+        \Gamma_z(t)=f\left[\Gamma_x(t),\Gamma_y(t)\right]\\
+    \end{cases}
+\end{equation}
+
+\begin{example}\label{exam:M-1-1}
+    The plane and the following two surfaces are the classical solution of the Plateau's problem.
+    \begin{enumerate}[(i)]
+        \item For any closed simple curve $\Gamma$ on the following Catenoid, the Catenoid itself should be a minimal surface of such Plateau's problem with boundary $\Gamma$.
+        \begin{equation}\label{eq:M-1-2}
+            X(u,v)=\left(u,\cosh{u}\cos{v},\cosh{u}\sin{v}\right)
+        \end{equation}
+        \item For any closed simple curve $\Gamma$ on the following Helicoid, it is a minimal surface of such Plateau's problem with boundary $\Gamma$.
+        \begin{equation}\label{eq:M-1-3}
+            X(u,v)=\left(v\cos{u},v\sin{u},u\right)
+        \end{equation}
+    \end{enumerate}
+\end{example}
+
+One can verify this example by simply checking the mean curvature $H$ of the surface (\ref{eq:M-1-2}) and (\ref{eq:M-1-3}) are both zero.
+
+Furthermore, based on the concept of hypersurface area established in the previous section, we can generalize Plateau's problem to arbitrary $n$-dimensional hypersurfaces and demonstrate that a necessary condition for the solutions to these problems is that they constitute a stationary point of the mean curvature flow (we shall prove this by verifying that the mean curvature flow is the gradient flow of the area functional).
+\begin{problem}[Minimal Surface]\label{prob:M-1-2}
+    For a smooth, compact and closed $(n-1)$-dimensional submanifold $\Gamma\subseteq \mathbb{R}^{n+1}$ find an $n$-dimensional hypersurface $M$ which could be bounded by $\Gamma$ and has the minimal area among all the hypersurface with the same boundary.
+\end{problem}
+
+\subsection{Isoperimetric Problem}
+
+\begin{problem}[Isoperimetric Problem]\label{prob:M-2-1}
+    Given an area $A>0$ in the plane $\mathbb{R}^2$, does there exist a closed curve with the shortest possible parameter such that the area enclosed within it is exactly $A$?
+\end{problem}
+
+We claim that such closed curve does exist, because the area enclosed by a closed curve of zero length is evidently also zero, it follows that the length of any closed curve enclosing an area $A>0$ must necessarily be greater than zero. Furthermore, as it can be proven that the set comprising all closed curves with an enclosed area of $A$ is complete, the Extreme Value Theorem implies that the lengths of all curves within this set must possess a greatest lower bound.
+
+To find such curve we define the functional of the length of any closed curve $\gamma:I\to\mathbb{R}^2$ as
+\begin{equation*}
+    L_\gamma=\int_I\left|\dot{\gamma}\right|\,\mathrm{d}t
+\end{equation*}
+
+\subsection{Self-similar Solutions}
