@@ -8,12 +8,14 @@
 \contentsline {subsubsection}{\numberline {2.2.2}First variation of Area and Volume}{12}{subsubsection.2.2.2}%
 \contentsline {section}{\numberline {3}Mean Curvature Flow}{13}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Minimal Surface Problem}{15}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Isoperimetric Problem}{17}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Self-similar Solutions}{17}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Valuable Research Directions}{18}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Generalizing Isoperimetric Inequality}{18}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Review the Proof of the Multiplicity-One Conjecture and Try to Prove The Smale Conjecture}{18}{subsection.4.2}%
-\contentsline {section}{Reference}{19}{subsection.4.2}%
+\contentsline {subsection}{\numberline {3.2}Self-similar Solutions}{17}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Isoperimetric Problem}{18}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The Case of Planar Curve}{18}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}The Evolution and Variation of Geometric Quantities}{18}{subsubsection.4.1.1}%
+\contentsline {section}{\numberline {5}Valuable Research Directions}{21}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Generalizing Isoperimetric Inequality}{21}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Review the Proof of the Multiplicity-One Conjecture and Try to Prove The Smale Conjecture}{21}{subsection.5.2}%
+\contentsline {section}{Reference}{22}{subsection.5.2}%
 \contentsline {section}{\numberline {A}Appendix of code and algorithm}{i}{appendix.A}%
 \contentsline {subsection}{\numberline {A.1}code blocks}{i}{subsection.A.1}%
 \contentsline {subsection}{\numberline {A.2}Algorithm}{i}{subsection.A.2}%

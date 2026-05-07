@@ -1,0 +1,111 @@
+\section{Isoperimetric Problem}
+
+\subsection{The Case of Planar Curve}
+\begin{problem}[Isoperimetric Problem]\label{prob:M-2-1}
+    Given an area $A>0$ in the plane $\mathbb{R}^2$, does there exist a closed curve with the shortest possible parameter such that the area enclosed within it is exactly $A$?
+\end{problem}
+
+We claim that such closed curve does exist, because the area enclosed by a closed curve of zero length is evidently also zero, it follows that the length of any closed curve enclosing an area $A>0$ must necessarily be greater than zero. Furthermore, as it can be proven that the set comprising all closed curves with an enclosed area of $A$ is complete, the Extreme Value Theorem implies that the lengths of all curves within this set must possess a greatest lower bound.
+
+To find such minimal parameter, we are going to prove the following theorem, and thus the curve should be a circle and the minimal parameter is $L=2\sqrt{\pi A}$.
+
+\begin{theorem}\label{thm:P-Isoperimetric Inequality}
+    For any closed planar curve $\boldsymbol{\alpha}$, its length $L$ and enclosed area $A$ should satisfy that
+\begin{equation}\label{eq:I-1-1}
+    L^2\ge 4\pi A
+\end{equation}
+and the equality holds if and only if $\boldsymbol{\alpha}$ is a circle.
+\end{theorem}
+
+To prove this theorem, we plan to use the corresponding techniques of the curve shortening flow, which is a special case of the mean curvature flow. Specifically, we will first analyze the evolution of the following quantity along the curve shortening flow:
+\begin{equation*}
+    Q_{\boldsymbol{\alpha}}(t)=L^2(t)-4\pi\cdot A(t)
+\end{equation*}
+and conclude that it is monotonically non-increasing. Then we will show that regardless of the initial closed curve, curve shortening flow eventually evolves into some round points. Then since it's easy to verify that $Q_{\boldsymbol{\alpha}}(t)$ is zero when $\boldsymbol{\alpha}$ is a circle, we can conclude that $Q_{\boldsymbol{\alpha}}(t)\ge 0$ for any closed curve $\boldsymbol{\alpha}$, and that is exactly (\ref{eq:I-1-1}).
+
+As for the uniqueness of the equality condition, it is guaranteed by the evolutionary trend of the curve-shortening flow. Specifically, we will first demonstrate that any curve $\boldsymbol{\alpha}$ satisfying $Q_{\boldsymbol{\alpha}}=0$ remains invariant under the curve-shortening flow. Subsequently—given that any curve undergoing curve-shortening flow eventually evolves into a round point—it follows that such $\boldsymbol{\alpha}$ must be a circle.
+
+\subsubsection{The Evolution and Variation of Geometric Quantities}
+
+For a planar closed curve $\boldsymbol{\alpha}$ let $X:M^1\to\mathbb{R}^2$ be its smooth immersion parameterized by arc length $s$, where $M^1$ is isomorphic to the torus $\mathbb{S}^1=\mathbb{R}/2\pi\mathbb{Z}$. Let $\mathbf{T}(s)=X^\prime (s)$ and $\mathbf{N}(s)=-J\cdot\mathbf{T}$ be the unit tangent and normal vector fields along $\boldsymbol{\alpha}$ respectively, where $J:\mathbb{R}^2\to\mathbb{R}^2$ is the counterclockwise rotation by $\pi/2$. Then let $\kappa(s)$ be the curvature of $\boldsymbol{\alpha}$ at $s$, which is defined by the following Frenet-Serret equations:
+\begin{equation}\label{eq:F-S equation}
+    \begin{cases}
+        \mathbf{T}^\prime(s)=\kappa\cdot\mathbf{N}(s)\\
+        \mathbf{N}^\prime(s)=-\kappa\cdot\mathbf{T}(s)
+    \end{cases}
+\end{equation}
+
+Now let $\sigma:M^1\to\mathbb{R}$ be the support function of $\boldsymbol{\alpha}$ which is defined by:
+\begin{equation*}
+    \sigma:s\mapsto\left<X(s),\mathbf{N}(s)\right>
+\end{equation*}
+Then by (\ref{eq:F-S equation}) we can get that
+\begin{equation*}
+    \int_{M^1}\sigma\kappa\,\mathrm{d}s=\int_{M^1}\left<X,\kappa\cdot\mathbf{N}\right>\,\mathrm{d}s=-\int_{M^1}\left<X,X{''}\right>\,\mathrm{d}s=\int_{M^1}{\left|X^{\prime}\right|}^2\,\mathrm{d}s=L
+\end{equation*}
+If $\boldsymbol{\alpha}$ is also embedded, then let $\mathcal{M}=X(M^1)$ and we write $X$ as $X(s)=(x(s),y(s))$. By the Green's theorem and the fact that $\mathbf{T}=(x^\prime(s),y^\prime(s))$, $\mathbf{N}=(y^\prime(s),-x^\prime(s))$ we can get that
+\begin{equation*}
+    A=\frac{1}{2}\int_{\mathcal{M}}(x\,\mathrm{d}y-y\,\mathrm{d}x)=\frac{1}{2}\int_{M^1}(x,y)\cdot(y^\prime,-x^\prime)\,\mathrm{d}s=\frac{1}{2}\int_{M^1}\left<X,\mathbf{N}\right>\,\mathrm{d}s=\frac{1}{2}\int_{M^1}\sigma\,\mathrm{d}s
+\end{equation*}
+
+\begin{lemma}\label{lem:I-1-3}
+    Let $X$ be a curve evolving by
+    \begin{equation}
+        \frac{\partial X}{\partial t}X(u,t)=-\phi(u,t)\cdot\mathbf{N}(u,t)
+    \end{equation}
+    where $\phi:M^1\times\left[0,T\right)\to\mathbb{R}$ is a function. Then for any $C^2$ function $f:M^1\times [0,T)\to\mathbb{R}$ we have
+    \begin{equation*}
+        f_{st}=f_{ts}+\phi\cdot f_s\cdot\kappa
+    \end{equation*}
+\end{lemma}
+
+Now let $X:M^1\times\left[0,T\right)\to\mathbb{R}^2$ be a smooth map, which is an immersion for each fixed $t\in\left[0,T\right)$. We say that $X(t)$ is a solution of the curve shortening flow if it satisfies that
+\begin{equation}\label{eq:I-1-2}
+    \frac{\partial X}{\partial t}(u,t)=-\kappa(u,t)\cdot\mathbf{N}(u,t)
+\end{equation}
+For such $X(u,t)$ we will prove the following lemmas, which describe the evolution of the length $L(t)$ and area $A(t)$ along the curve shortening flow.
+
+\begin{lemma}\label{lem:I-1-1}
+    For a smooth embedded solution $X:M^1\times\left[0,T\right)\to\mathbb{R}^2$ of the curve shortening flow, the length $L(t)$ evolves according to the following equation:
+    \begin{equation}
+        \frac{\mathrm{d}L}{\mathrm{d}t}(t)=-\int_{M^1}\kappa^2\,\mathrm{d}u
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Let $s$ be the arc length, then it's easy to know that for any fixed $t$ there are
+    \begin{equation}\label{eq:I-1-3}
+        \mathrm{d}s=\left|X_u(u,t)\right|\,\mathrm{d}u
+    \end{equation}
+    Thus we have
+    \begin{equation*}
+        \frac{\mathrm{d}L}{\mathrm{d}t}=\frac{\mathrm{d}}{\mathrm{d}t}\int_{M^1}\mathrm{d}s=\int_{M^1}\frac{\partial}{\partial t}\left|X_u(u,t)\right|\,\mathrm{d}u
+    \end{equation*}
+    Now we are going to calculate $\partial\left|X_u\right|/\partial t$. Since $X(u,t)$ is a smooth embedded solution of the curve shortening flow, we have ${\left(X_u\right)}_t={\left(X_t\right)}_u$, then there are
+    \begin{equation*}
+        \frac{\partial}{\partial t}\left|X_u (u,t)\right|=\frac{1}{\left|X_u\right|}\left<X_u,{\left(X_u\right)}_t\right>=\left<\mathbf{T},{\left(X_t\right)}_u\right>
+    \end{equation*}
+    From (\ref{eq:I-1-2}) we can get that
+    \begin{equation*}
+        \left<\mathbf{T},{\left(X_t\right)}_u\right>=-\kappa_u\cdot\left<\mathbf{T},\mathbf{N}\right>-\kappa\cdot\left<\mathbf{T},\mathbf{N}_u\right>
+    \end{equation*}
+    Finally, by using $\left<\mathbf{T},\mathbf{N}\right>=0$ and the Frenet-Serret equations we can get that
+    \begin{equation}\label{eq:I-1-4}
+        \frac{\partial}{\partial t}\left|X_u (u,t)\right|=-\kappa^2
+    \end{equation}
+    and that completes the proof.
+\end{proof}
+
+\begin{lemma}\label{lem:I-1-2}
+    For an embedded solution $X:M^1\times\left[0,T\right)\to\mathbb{R}^2$ to the curve shortening flow, the area $A(t)$ enclosed by $\mathcal{M}$ evolves according to the following equation:
+    \begin{equation}
+        \frac{\mathrm{d}A}{\mathrm{d}t}(t)=-\int_{M^1}\kappa\,\mathrm{d}s=-2\pi
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    By using (\ref{eq:I-1-3}) and (\ref{eq:I-1-4}) we can get that
+    \begin{equation*}
+        \frac{\mathrm{d}A}{\mathrm{d}t}=\frac{1}{2}\int_{M^1}\left(\left<X_t,\mathbf{N}\right>+\left<X,\mathbf{N}_t\right>\right)\,\mathrm{d}s-\frac{\kappa^2}{2}\int_{M^1}\left<X,\mathbf{N}\right>\,\mathrm{d}s
+    \end{equation*}
+    Then we are going to find out $\mathbf{N}_t$
+\end{proof}
