@@ -1,5 +1,18 @@
 \begin{thebibliography}{1}
 
+\bibitem{andrews2022extrinsic}
+B.~Andrews, B.~Chow, C.~Guenther, and M.~Langford, {\em Extrinsic geometric flows}, vol.~206.
+\newblock American mathematical society, 2022.
+\newblock Thm 3.1, page 64.
+
+\bibitem{shorttimeexistence}
+B.~Andrews, B.~Chow, C.~Guenther, and M.~Langford, {\em Extrinsic geometric flows}, vol.~206.
+\newblock American mathematical society, 2022.
+\newblock Thm 2.9, page 50.
+
+\bibitem{martinez2021isoperimetric}
+{\'A}.~Mart{\'\i}nez-P{\'e}rez and J.~M. Rodr{\'\i}guez, ``Isoperimetric inequalities in riemann surfaces and graphs,'' {\em The Journal of Geometric Analysis}, vol.~31, no.~4, pp.~3583--3607, 2021.
+
 \bibitem{gage1983isoperimetric}
 M.~E. Gage, ``An isoperimetric inequality with applications to curve shortening,'' {\em Journal of Duke Math}, 1983.
 

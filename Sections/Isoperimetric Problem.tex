@@ -1,7 +1,7 @@
 \section{Isoperimetric Problem}
 
 \subsection{The Case of Planar Curve}
-\begin{problem}[Isoperimetric Problem]\label{prob:M-2-1}
+\begin{problem}[Isoperimetric Problem]\label{prob:I-1-1}
     Given an area $A>0$ in the plane $\mathbb{R}^2$, does there exist a closed curve with the shortest possible parameter such that the area enclosed within it is exactly $A$?
 \end{problem}
 
@@ -30,8 +30,8 @@ As for the uniqueness of the equality condition, it is guaranteed by the evoluti
 For a planar closed curve $\boldsymbol{\alpha}$ let $X:M^1\to\mathbb{R}^2$ be its smooth immersion parameterized by arc length $s$, where $M^1$ is isomorphic to the torus $\mathbb{S}^1=\mathbb{R}/2\pi\mathbb{Z}$. Let $\mathbf{T}(s)=X^\prime (s)$ and $\mathbf{N}(s)=-J\cdot\mathbf{T}$ be the unit tangent and normal vector fields along $\boldsymbol{\alpha}$ respectively, where $J:\mathbb{R}^2\to\mathbb{R}^2$ is the counterclockwise rotation by $\pi/2$. Then let $\kappa(s)$ be the curvature of $\boldsymbol{\alpha}$ at $s$, which is defined by the following Frenet-Serret equations:
 \begin{equation}\label{eq:F-S equation}
     \begin{cases}
-        \mathbf{T}^\prime(s)=\kappa\cdot\mathbf{N}(s)\\
-        \mathbf{N}^\prime(s)=-\kappa\cdot\mathbf{T}(s)
+        \mathbf{T}^\prime(s)=-\kappa\cdot\mathbf{N}(s)\\
+        \mathbf{N}^\prime(s)=\kappa\cdot\mathbf{T}(s)
     \end{cases}
 \end{equation}
 
@@ -54,16 +54,66 @@ If $\boldsymbol{\alpha}$ is also embedded, then let $\mathcal{M}=X(M^1)$ and we 
         \frac{\partial X}{\partial t}X(u,t)=-\phi(u,t)\cdot\mathbf{N}(u,t)
     \end{equation}
     where $\phi:M^1\times\left[0,T\right)\to\mathbb{R}$ is a function. Then for any $C^2$ function $f:M^1\times [0,T)\to\mathbb{R}$ we have
-    \begin{equation*}
+    \begin{equation}\label{eq:I-1-5}
         f_{st}=f_{ts}+\phi\cdot f_s\cdot\kappa
-    \end{equation*}
+    \end{equation}
 \end{lemma}
+\begin{proof}
+    By using
+    \begin{equation*}
+        \frac{\partial}{\partial s}=\frac{\partial u}{\partial s}\cdot\frac{\partial}{\partial u}=\frac{1}{\left|X_u (u,t)\right|}\cdot\frac{\partial}{\partial u}
+    \end{equation*}
+    we can get that
+    \begin{align*}
+        f_{st}&=\frac{\partial}{\partial t}\left(\frac{1}{\left|X_u\right|}\cdot\frac{\partial f}{\partial u}\right)\\
+        &=-\frac{1}{{\left|X_u\right|}^3}\cdot\left<X_{tu},X_u\right>\cdot f_u+\frac{1}{\left|X_u\right|}f_{tu}\\
+        &=\frac{1}{{\left|X_u\right|}^3}\left[\phi_u\left<\mathbf{N},X_u\right>+\phi\left<\mathbf{N}_u,X_u\right>\right]\cdot f_u+f_{ts}\\
+        &=\phi\cdot\left<\mathbf{N}_s,\mathbf{T}\right>f_s+f_{ts}=\phi\cdot f_s\cdot\kappa+f_{ts}
+    \end{align*}
+\end{proof}
 
 Now let $X:M^1\times\left[0,T\right)\to\mathbb{R}^2$ be a smooth map, which is an immersion for each fixed $t\in\left[0,T\right)$. We say that $X(t)$ is a solution of the curve shortening flow if it satisfies that
 \begin{equation}\label{eq:I-1-2}
     \frac{\partial X}{\partial t}(u,t)=-\kappa(u,t)\cdot\mathbf{N}(u,t)
 \end{equation}
 For such $X(u,t)$ we will prove the following lemmas, which describe the evolution of the length $L(t)$ and area $A(t)$ along the curve shortening flow.
+
+\begin{lemma}\label{lem:I-1-4}
+    Under the curve shortening flow, the unit tangent vector field $\mathbf{T}$ and the unit normal vector field $\mathbf{N}$ evolves by the following equations:
+    \begin{equation}\label{eq:I-1-16}
+        \begin{cases}
+            \mathbf{T}_t=-\kappa_s\cdot\mathbf{N}\\
+            \mathbf{N}_t=\kappa_s\cdot\mathbf{T}
+        \end{cases}
+    \end{equation}
+    Moreover, the curvature $\kappa$ evolves by the following equation:
+    \begin{equation}
+        \kappa_t=\kappa_{ss}+\kappa^3
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    By Lem.\ref{lem:I-1-3} we know that under the curve shortening flow (\ref{eq:I-1-2}) there are
+    \begin{equation*}
+        X_{st}=X_{ts}+\kappa^2\cdot X_s
+    \end{equation*}
+    Then from the Frenet-Serret equations we can get that
+    \begin{align*}
+        \mathbf{T}_t&={(-\kappa\cdot\mathbf{N})}_s+\kappa^2\mathbf{T}\\
+        &=-\kappa_s\cdot\mathbf{N}-\kappa\cdot\mathbf{N}_s+\kappa^2\mathbf{T}\\
+        &=-\kappa_s\cdot\mathbf{N}
+    \end{align*}
+    Since $\mathbf{N}_s=\kappa\cdot\mathbf{T}$, by
+    \begin{equation*}
+        \frac{\mathrm{d}}{\mathrm{d}t}\left<\mathbf{N},\mathbf{T}\right>=\left<\mathbf{N}_t,\mathbf{T}\right>+\left<\mathbf{N},\mathbf{T}_t\right>=\left<\mathbf{N}_t,\mathbf{T}\right>-\kappa_s=0
+    \end{equation*}
+    we can get that $\mathbf{N}_t=\kappa_s\cdot\mathbf{T}$.
+    
+    Finally, by using the above equations and the normal angle $\theta_t=\kappa_s$ we can get that
+    \begin{equation*}
+        \kappa_t=\theta_{st}=\theta_{ts}+\kappa^2\cdot\theta_s=\kappa_{ss}+\kappa^3
+    \end{equation*}
+\end{proof}
 
 \begin{lemma}\label{lem:I-1-1}
     For a smooth embedded solution $X:M^1\times\left[0,T\right)\to\mathbb{R}^2$ of the curve shortening flow, the length $L(t)$ evolves according to the following equation:
@@ -107,5 +157,621 @@ For such $X(u,t)$ we will prove the following lemmas, which describe the evoluti
     \begin{equation*}
         \frac{\mathrm{d}A}{\mathrm{d}t}=\frac{1}{2}\int_{M^1}\left(\left<X_t,\mathbf{N}\right>+\left<X,\mathbf{N}_t\right>\right)\,\mathrm{d}s-\frac{\kappa^2}{2}\int_{M^1}\left<X,\mathbf{N}\right>\,\mathrm{d}s
     \end{equation*}
-    Then we are going to find out $\mathbf{N}_t$
+    From Lem.\ref{lem:I-1-4} we can get that $\mathbf{N}_t=\kappa_s\cdot\mathbf{T}$, thus there are
+    \begin{align*}
+        \int_{M^1}\left(\left<X_t,\mathbf{N}\right>+\left<X,\mathbf{N}_t\right>\right)\,\mathrm{d}s&=\int_{M^1}\left(\kappa_s\left<X,\mathbf{T}\right>-\kappa\right)\,\mathrm{d}s\\
+        &=-\kappa\int_{M^1}\left(\left<X_s,\mathbf{T}\right>+\left<X,\mathbf{T_s}\right>\right)\,\mathrm{d}s-\int_{M^1}\kappa\,\mathrm{d}s\\
+        &=-2\int_{M^1}\kappa\,\mathrm{d}s+\kappa^2\int_{M^1}\left<X,\mathbf{N}\right>\,\mathrm{d}s
+    \end{align*}
+    and that gives
+    \begin{equation*}
+        \frac{\mathrm{d}A}{\mathrm{d}t}=-\int_{M^1}\kappa\,\mathrm{d}s=-2\pi
+    \end{equation*}
 \end{proof}
+
+Now by Lem.\ref{lem:I-1-1} and Lem.\ref{lem:I-1-2} we can deduce the evolution of $Q_{\boldsymbol{\alpha}}$ for an embedded closed curve $\boldsymbol{\alpha}$ along the curve shortening flow, which is given by the following equation:
+\begin{equation*}
+    \frac{\mathrm{d}Q_{\boldsymbol{\alpha}}}{\mathrm{d}t}=8\pi^2-2L\int_{M^1}\kappa^2\,\mathrm{d}s
+\end{equation*}
+Then by using the Cauchy-Schwarz inequality we can get that
+\begin{equation*}
+    \frac{\mathrm{d}Q_{\boldsymbol{\alpha}}}{\mathrm{d}t}=8\pi^2-2\left(\int_{M^1}1^2\,\mathrm{d}s\right)\left(\int_{M^1}\kappa^2\,\mathrm{d}s\right)\le 8\pi^2-2{\left(\int_{M^1}\kappa\,\mathrm{d}s\right)}^2=0
+\end{equation*}
+This shows that $Q_{\boldsymbol{\alpha}}$ is indeed monotonically non-increasing along the curve shortening flow.
+
+\subsubsection{Curvature Estimation}
+
+Now we are going to compute the limit of $Q_{\boldsymbol{\alpha}}$ as $t \to T$. To do that, we first need to estimate the curvature $\kappa$ along the curve shortening flow which will show that both the length $L(t)$ and area $A(t)$ will converge to zero as $t \to T$.
+\begin{proposition}\label{prop:I-2-1}
+    If $X_0:\mathbb{R}/A\mathbb{Z}\to\mathbb{R}^2$ is an immersion, then the maximal time of existence of the curve shortening flow with initial data $X_0$ is finite which we denote by $T$.
+\end{proposition}
+
+\begin{proof}
+    Let $X:\mathbb{R}/A\mathbb{Z}\to\mathbb{R}^2$ be a solution to the curve shortening flow with initial data $X_0$. Since $\mathbb{R}/A\mathbb{Z}$ is compact, the image of $X_0$ is contained in some large ball $B_R(0)$ in $\mathbb{R}^2$. In particular $X_0$ is disjoint from the circle $\tilde{X}_0(\theta)$. By the avoidance principle\,\cite{andrews2022extrinsic} this remains true for positive times, and so $X(\mathbb{R}/A\mathbb{Z},t)$ is enclosed by the circle given by the image of the map $\tilde{X}(\theta,t)=\sqrt{R^2-2t}\cdot(\cos{\theta},\sin{\theta})$. It's easy to verify that $\tilde{X}(\theta,t)$ is a solution to the curve shortening flow, and thus the maximal time of existence of $X$ is at most $R^2/2$.
+\end{proof}
+
+Our approach to determining the bounds of the curvature $\kappa$ proceeds as follows: First, we observe that a point $x$ on a smooth curve where the curvature $\kappa$ is large, can be viewed locally as a part of circle of radius $1/\kappa$. Consequently—drawing upon classical results from Euclidean geometry—we readily deduce that if $s$ denotes the arc length, the distance $d$ between any two points would have the following approximation:
+\begin{equation*}
+    d(x,y)\approx \frac{2}{\kappa}\cdot\sin{\left(\frac{\kappa\cdot s}{2}\right)} \approx z-\frac{\kappa^2}{24}\cdot z^3
+\end{equation*}
+Thus, provided we can identify a function $\varphi$ such that $\varphi(x)\ge x-Cx^3+o(x^3)$ as $x\to 0$ and $d(x,y)\ge\varphi (s(x,y))$, then we can derive an upper-bound estimate for the curvature of the form $\kappa^2\le 24 C$. We now proceed to elaborate on this line of reasoning in detail.
+
+\begin{definition}\label{def:chord-arc profile}
+    Let $X:M^1\to\mathbb{R}^2$ be a smooth embedding. The cord-arc profile of $X$ is a function $\psi_X:\left[0,\infty\right)\to\mathbb{R}$ defined by
+    \begin{equation}
+        \psi_X(z)=\inf{\left\{\left|X(x)-X(y)\right|:s(x,y)=z\right\}}
+    \end{equation}
+    where $s(x,y)$ is the arc length between $x$ and $y$ along $X$.
+\end{definition}
+
+We also define the extrinsic distance $d:M^1\times M^1\times [0,T)\to\mathbb{R}$ on such embedded solution $X$ as
+\begin{equation*}
+    d(x,y,t)=\left|X(x,t)-X(y,t)\right|
+\end{equation*}
+Then by using the Huisken's distance comparison estimate, we can get the following propostion.
+\begin{proposition}\label{prop:I-2-2}
+    Let $X:M^1\to\mathbb{R}^2$ be a smooth embedding and let $K=\sup_{M^1}\left|\kappa\right|$. Then
+    \begin{equation}
+        \psi_X(z)=z-\frac{K^2}{24}\cdot z^3+O(z^5),\,\,\, z\to 0
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    We first claim that for any $(x,y)$ with $s(x,y)\le\pi/K$, there are
+    \begin{equation*}
+        d(x,y)\ge\frac{2}{K}\cdot\sin{\left[\frac{K\cdot s(x,y)}{2}\right]}
+    \end{equation*}
+    Then by using the Taylor expansion of $\sin{z}$ at $z=0$ we can get that
+    \begin{equation*}
+        \psi_X(z)\ge z-\frac{K^2}{24}\cdot z^3+O(z^5),\,\,\, z\to 0
+    \end{equation*}
+    To prove this claim, we let $x$ and $y$ be two points on the curve joined by a curve segment of length $s(x,y)\le\pi/K$. Let $u$ be an arc length parameter with $u(x)=-s/2$ and $u(y)=s/2$. For any $u\in\left[-s/2,s/2\right]$ we have
+    \begin{equation*}
+        \left|\theta(u)-\theta(0)\right|\le\left|\int_{0}^{u}\kappa\,\mathrm{d}u\right|\le K\left|u\right|\le\frac{K\cdot s(x,y)}{2}\le\frac{\pi}{2}
+    \end{equation*}
+    Then note that
+    \begin{align*}
+        \left<X(y)-X(x),\mathbf{T}(0)\right>&=\int_{-s/2}^{s/2}\left<\mathbf{T}(u),\mathbf{T}(0)\right>\,\mathrm{d}u\\
+        &\ge\int_{-s/2}^{s/2}\cos{\left(K\left|u\right|\right)}\,\mathrm{d}u=\frac{2}{K}\cdot\sin{\left[\frac{K\cdot s(x,y)}{2}\right]}
+    \end{align*}
+    By using the following Cauchy-Schwarz inequality one can see that the claim holds.
+    \begin{equation*}
+        \left|X(y)-X(x)\right|\ge\left<X(y)-X(x),\mathbf{T}(0)\right>
+    \end{equation*}
+    
+    To get the reverse inequality we will show that for any small $z$ there exists points $(x,y)$ with $s(x,y)=z$ and
+    \begin{equation*}
+        d(x,y)\le z-\frac{K^2}{24}\cdot z^3+ C\cdot z^5
+    \end{equation*}
+    for some constant $C$. Now we first consider the Tylor expansion of such embedding $X$ with the arc length parameter $u$ at the point $u=0$:
+    \begin{equation*}
+        X(u)=X(0)+\sum_{n=1}^{4}\frac{u^n}{n!}\cdot\frac{\mathrm{d}^n X}{\mathrm{d}u^n}(0)+O(u^5),\,\,\, u\to 0
+    \end{equation*}
+    By the Frenet-Serret equations we know that $X^\prime (0)=\mathbf{T}$ and $X^{\prime\prime}(0)=-\kappa\mathbf{N}$. Also by computing their derivatives we can get that
+    \begin{equation*}
+        X^{\prime\prime\prime}(0)=-\kappa^\prime\mathbf{N}-\kappa^2\mathbf{T},\,\,\, X^{(4)}(0)=\left(\kappa^3-\kappa^{\prime\prime}\right)\mathbf{N}-3\kappa\kappa^\prime\mathbf{T}
+    \end{equation*}
+    This gives that
+    \begin{equation*}
+        X(u)-X(0)=u\mathbf{T}-\frac{u^2}{2}\kappa\mathbf{N}-\frac{u^3}{6}\left(\kappa^\prime\mathbf{N}+\kappa^2\mathbf{T}\right)+\frac{u^4}{24}\left[\left(\kappa^3-\kappa^{\prime\prime}\right)\mathbf{N}-3\kappa\kappa^\prime\mathbf{T}\right]+O(u^5)
+    \end{equation*}
+    Then for $s\to 0$, we can deduce that
+    \begin{equation*}
+        {\left|X\left(\frac{s}{2}\right)-X\left(-\frac{s}{2}\right)\right|}^2=s^2-\frac{s^4}{12}\kappa^2+O(s^6)
+    \end{equation*}
+    Finally, by considering the Taylor expansion of $\sqrt{1+x}$ at $x=0$ we can get that
+    \begin{equation*}
+        d\left(\frac{s}{2},-\frac{s}{2}\right)=\left|X\left(\frac{s}{2}\right)-X\left(-\frac{s}{2}\right)\right|=s-\frac{s^3}{24}\kappa^2+O(s^5),\,\,\, s\to 0
+    \end{equation*}
+    This completes the proof.
+\end{proof}
+
+Now we are going to find the function $\varphi$ such that $\varphi(x)\ge x-Cx^3+o(x^3)$ as $x\to 0$ and $d(x,y)\ge\varphi (s(x,y))$. A natural way to do that is to study the condition on $\varphi$ which will guarantee the positivity of the function $d(x,y)-\varphi (s(x,y))$. Thus we define the function $Z:M^1\times M^1\times\left[0,T\right)\to\mathbb{R}$ as
+\begin{equation*}
+    Z(x,y,t)=d(x,y,t)-L(t)\cdot\varphi\left[\frac{s(x,y,t)}{L(t)},t\right]
+\end{equation*}
+where $\varphi(x,t)=\varphi_t(x)$ for each $t\in[0,T)$. Obviously, $Z$ is well-defined and smooth. So there are
+\begin{equation*}
+    \frac{\partial Z}{\partial x}=\frac{\partial d}{\partial x}-\varphi^\prime_t\cdot\frac{\partial s}{\partial x},\,\,\, \frac{\partial Z}{\partial y}=\frac{\partial d}{\partial y}-\varphi^\prime_t\cdot\frac{\partial s}{\partial y}
+\end{equation*}
+By letting $w=R/d=[X(x)-X(y)]/\left|X(x)-X(y)\right|$ and considering the differentiation of $d^2=\left<X(x)-X(y),X(x)-X(y)\right>$ we get that
+\begin{equation*}
+    \frac{\partial d}{\partial x}=-\left<w,\mathbf{T}(x)\right>,\quad \frac{\partial d}{\partial y}=\left<w,\mathbf{T}(y)\right>
+\end{equation*}
+Since $\partial s/\partial x=-1$ and $\partial s/\partial y=1$, we have
+\begin{equation*}
+    \frac{\partial Z}{\partial x}=-\left<w,\mathbf{T}(x)\right>+\varphi^\prime_t,\,\,\, \frac{\partial Z}{\partial y}=\left<w,\mathbf{T}(y)\right>-\varphi^\prime_t
+\end{equation*}
+By computing the second derivatives of $d$ we can get the second derivatives of $Z$ as follows:
+\begin{align*}
+    \frac{\partial^2 Z}{\partial x^2}&=\left<w,\kappa (x)\mathbf{N}(x)\right>+\frac{1}{d}\left<\mathbf{T}(x)-\left<w,\mathbf{T}(x)\right>w,\mathbf{T}(x)\right>-\frac{\varphi^{\prime\prime}_t}{L(t)}\\
+    \frac{\partial^2 Z}{\partial y^2}&=-\left<w,\kappa (y)\mathbf{N}(y)\right>+\frac{1}{d}\left<\mathbf{T}(y)-\left<w,\mathbf{T}(y)\right>w,\mathbf{T}(y)\right>-\frac{\varphi^{\prime\prime}_t}{L(t)}\\
+    \frac{\partial^2 Z}{\partial x\partial y}&=-\frac{1}{d}\left<\mathbf{T}(x)-\left<w,\mathbf{T}(x)\right>w,\mathbf{T}(y)\right>+\frac{\varphi^{\prime\prime}_t}{L(t)}
+\end{align*}
+Combined with the equation of curve shortening flow (\ref{eq:I-1-2}) and the result of Lem.\ref{lem:I-1-1} we can also get the time derivative of $Z$ as follows:
+\begin{align*}
+    \frac{\partial Z}{\partial t}&=\frac{\partial d}{\partial t}-\frac{\mathrm{d}L}{\mathrm{d}t}\cdot\varphi-\frac{\varphi^\prime_t}{L(t)}\left(\frac{\partial s}{\partial t}\cdot L-\frac{\mathrm{d}L}{\mathrm{d}t}\cdot s\right)-\frac{\partial\varphi}{\partial t}\cdot L(t)\\
+    &=\left<w,\kappa(x)\mathbf{N}(x)-\kappa(y)\mathbf{N}(y)\right>+\left(\varphi-\frac{s}{L}\varphi^\prime_t\right)\int_{M^1}\kappa^2\,\mathrm{d}s+\varphi^\prime_t\int^y_x\kappa^2\,\mathrm{d}s-\frac{\partial\varphi}{\partial t}\cdot L(t)
+\end{align*}
+
+Next, we consider all possible local minima of $Z$. A necessary condition for $Z$ to be strictly positive is evidently that its values at these points are strictly positive. Based on the necessary conditions for local extrema, we set all first-order partial derivatives of $Z$ to zero to obtain
+\begin{equation*}
+    \left<w,\mathbf{T}(x)\right>=\left<w,\mathbf{T}(y)\right>=\varphi^\prime_t
+\end{equation*}
+This leads to two possibilities: Either the two tangent directions $\mathbf{T}(x)$ and $\mathbf{T}(y)$ are parallel, or they are bisected by the direction $w$. We can eliminate one of these possibilities by assuming that $\varphi$ is concave, that is Prop.\ref{prop:I-1-1}. Then by hypothesis $Z\ge 0$ we know that for a concave $\varphi$ the only possibility is the case where $\mathbf{T}(x)$ and $\mathbf{T}(y)$ are bisected by $w$.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=stealth, scale=.8]
+        \fill[gray!28] (-2,1) .. controls (-2.333,1.167) and (-2.783,1.283) .. (-3,1.5) .. controls (-3.217,1.717) and (-3.383,2.100) .. (-3.3,2.3) .. controls (-3.217,2.500) and (-2.767,2.700) .. (-2.5,2.7) .. controls (-2.233,2.700) and (-1.950,2.333) .. (-1.7,2.3) .. controls (-1.450,2.267) and (-1.450,2.633) .. (-1,2.5) .. controls (-0.550,2.367) and (0.467,1.583) .. (1,1.5) .. controls (1.533,1.417) and (2.033,1.750) .. (2.2,2) .. controls (2.367,2.250) and (2.067,2.667) .. (2,3) .. controls (1,5) and (-1,4) .. (-2,6) .. controls (-1.900,6.333) and (-1.900,6.767) .. (-1.7,7) .. controls (-1.500,7.233) and (-1.250,7.500) .. (-0.8,7.4) .. controls (-0.350,7.300) and (0.367,6.500) .. (1,6.4) .. controls (1.633,6.300) and (2.333,6.667) .. (3,6.8) -- (3,2) .. controls (3.133,1.667) and (3.233,1.617) .. (3.4,1) .. controls (3.567,0.383) and (4.067,-1.117) .. (4,-1.7) .. controls (3.933,-2.283) and (3.333,-2.450) .. (3,-2.5) .. controls (2.667,-2.550) and (2.333,-2.167) .. (2,-2) .. controls (1,0) and (0,0.5) .. (-2,1) -- cycle;
+        \draw[dashed, gray] (-2,1) .. controls (-2.333,1.167) and (-2.783,1.283) .. (-3,1.5) .. controls (-3.217,1.717) and (-3.383,2.100) .. (-3.3,2.3) .. controls (-3.217,2.500) and (-2.767,2.700) .. (-2.5,2.7) .. controls (-2.233,2.700) and (-1.950,2.333) .. (-1.7,2.3) .. controls (-1.450,2.267) and (-1.450,2.633) .. (-1,2.5) .. controls (-0.550,2.367) and (0.467,1.583) .. (1,1.5) .. controls (1.533,1.417) and (2.033,1.750) .. (2.2,2) .. controls (2.367,2.250) and (2.067,2.667) .. (2,3);
+        \draw[
+            postaction={decorate},
+            decoration={
+                markings,
+                mark=at position 0.47 with {
+                    \draw[red, thick] [->] (0,0) -- (1,0)node[above]{$\mathbf{T}(x)$};
+                    \draw[blue, thick] [->] (0,0)node[below left, black]{$X(x,t)$} -- (0,-1)node[right]{$\mathbf{N}(x)$};
+                    \fill[black] (0,0) circle (1.5pt);
+                    \node (X) at (0,0){};
+                }
+            }
+        ] (2,-2) .. controls (1,0) and (0,0.5) .. (-2,1);
+        \draw[
+            postaction={decorate},
+            decoration={
+                markings,
+                mark=at position 0.43 with {
+                    \draw[red, thick] [->] (0,0)node[below left, black]{$X(y,t)$} -- (-1,0)node[left]{$\mathbf{T}(y)$};
+                    \draw[blue, thick] [->] (0,0) -- (0,1)node[right]{$\mathbf{N}(y)$};
+                    \fill[black] (0,0) circle (1.5pt);
+                    \node (Y) at (0,0){};
+                }
+            }
+        ] (-2,6) .. controls (-1,4) and (1,5) .. (2,3);
+        \coordinate (C) at ($(X)!1cm!(Y)$);
+        \draw[->, thick, black] (X) -- (C)node[right]{$w$};
+        \draw[gray] (C) -- (Y);
+        \draw[->, thick, black] (Y) -- ($(Y)!-1cm!(X)$)node[left]{$w$};
+        \path[name path=mycurve] (-1,2.5) .. controls (-0.550,2.367) and (0.467,1.583) .. (1,1.5);
+        \path[name path=ABline] (C) -- (Y);
+        \path[name intersections={of=mycurve and ABline, by=D}];
+        \fill (D) circle (1.5pt);
+        \node[above right] at (D) {$X(u,t)$};
+        \node at (3,-1) {$\Omega$};
+    \end{tikzpicture}
+    \caption{For the case of $\mathbf{T}(x)=\mathbf{T}(y)$ there must be a point $X(u,t)$ on the curve along the line joining the line segment from $X(x,t)$ to $X(y,t)$ and for any concave $\varphi$ it follows that $(x,y)$ does not minimize $Z$.}\label{fig:I-1-1}
+\end{figure}
+
+\begin{proposition}\label{prop:I-1-1}
+    Suppose that $\varphi (x)$ is symmetric about $z=1/2$ and is strictly concave with $\left|\varphi^\prime_t\right|<1$ on $(0,1)$, and let $(x,y)\in (M^1\times M^1)\setminus\left\{(x,x)\mid x\in M^1\right\}$ be a critical point of $Z$ with $\mathbf{T}(x)=\mathbf{T}(y)$ and $Z(x,y,t)=0$. Then there exists $(u,v)\in M^1\times M^1$ such that $Z(u,v,t)<0$.
+\end{proposition}
+
+\begin{proof}
+    According the Jordan curve theorem, the closed curve $X$ separates $\mathbb{R}^2$ into precisely two open connected regions. Then as $\left<w,\mathbf{T}_x\right>=\varphi^\prime\in (-1,1)$ we know that $w$ and $\mathbf{T}_x$ are linearly independent. It follows that for small $a>0$, the point $X(x,t)+aw$ lies in one of two connected components of $\mathbb{R}^2\setminus X(M^1)$, we denote it as $\Omega$. By carefully choosing the direction of parametrization, $\Omega$ can also contain the point $X(x,t)+a\mathbf{N}(x)$ for some small $a>0$ (as shown in Fig.\ref{fig:I-1-1}), since $\varphi$ is symmetric about $z=1/2$. Thus with the connectedness, $\Omega$ should also contain points $X(z,t)+a\mathbf{N}(z)$ for any $z\in M^1$ and so as point $X(y,t)+a\mathbf{N}(y)$. Then by $\mathbf{T}(x)=\mathbf{T}(y)$ we know that $\mathbf{N}(x)=\mathbf{N}(y)$ which implies that $\Omega$ contains point $X(y,t)+aw$ for some small $a>0$ but never contain any point $X(y,t)-aw$ with $a\in (0,\epsilon)$ (as shown in Fig.\ref{fig:I-1-1}).
+
+    Let $d=d(x,y,t)$ then there exists $d^*>0$ such that
+    \begin{equation*}
+        d^*=\sup{\left\{s\in(0,d)\mid X(x,t)+sw\in\Omega\right\}}
+    \end{equation*}
+    and from the above discussion we know that $0<d^*<d$ and $X(x,t)+d^* w\in\partial(\Omega)=X(M^1)$. Hence there exists $u\in M^1$ such that
+    \begin{equation*}
+        X(u,t)=X(x,t)+d^* w
+    \end{equation*}
+    Then as shown in Fig.\ref{fig:I-1-1} we have
+    \begin{equation*}
+        d(x,y,t)=d(x,u,t)+d(u,y,t),\quad s(x,y,t)=s(x,u,t)+s(u,y,t)
+    \end{equation*}
+    Therefore, by the strict concavity we can get that
+    \begin{equation*}
+        \varphi\left[\frac{s(x,u,t)}{L(t)},t\right]+\varphi\left[\frac{s(u,y,t)}{L(t)},t\right]>\varphi\left[\frac{s(x,y,t)}{L(t)},t\right]
+    \end{equation*}
+    Since $Z(x,y,t)=0$, we know that
+    \begin{equation*}
+        \varphi\left[\frac{s(x,y,t)}{L(t)},t\right]=\frac{d(x,y,t)}{L(t)}=\frac{d(x,u,t)}{L(t)}+\frac{d(u,y,t)}{L(t)}
+    \end{equation*}
+    Thus we get that
+    \begin{equation*}
+        \varphi\left[\frac{s(x,u,t)}{L(t)},t\right]+\varphi\left[\frac{s(u,y,t)}{L(t)},t\right]>\frac{d(x,u,t)}{L(t)}+\frac{d(u,y,t)}{L(t)}
+    \end{equation*}
+    It follows that either $\varphi[s(x,u,t)/L,t]>d(x,u,t)/L$ or $\varphi[s(u,y,t)/L,t]>d(u,y,t)/L$, which means at least one of $Z(x,u,t)$ and $Z(u,y,t)$ is negative. So we complete the proof.
+\end{proof}
+
+Since $\mathbf{T}(x)$ and $\mathbf{T}(y)$ are bisected by $w$, we let $\theta$ be the angle between $\mathbf{T}(x)$ and $w$, then it equals the angle between $\mathbf{T}(y)$ and $w$. Now we are going to prove the following proposition (Prop.\ref{prop:I-1-2}) which states that if a strictly concave smooth function $\varphi$ with $\left|\varphi^\prime\right|\le1$ also satisfies the inequality (\ref{eq:I-1-6}) then the minimal value of $Z$ can occur only at the instant $t=0$; consequently, ensuring that $Z$ is non-negative at every point at the initial moment suffices to guarantee its positivity. Furthermore, the resulting Inequality (\ref{eq:I-1-6}) along with other supplementary conditions can, in turn, assist us in determining the structure of the function $\varphi$.
+
+\begin{proposition}\label{prop:I-1-2}
+    Let $X:\mathcal{M}^1\times\left[0,T\right)\to\mathbb{R}^2$ be an embedded solution of curve shortening flow (\ref{eq:I-1-2}) and let $\varphi:\left[0,1\right]\times\left[0,\infty\right)\to\mathbb{R}$ be a smooth nonnegative function which is symmetric about $z=1/2$, strictly concave in its first argument, and satisfies $\left|\varphi^\prime\right|\le 1$. Suppose that $\varphi$ satisfies the inequality
+    \begin{equation}\label{eq:I-1-6}
+        \frac{\partial\varphi}{\partial\tau}\le 4\left(\varphi{''}+\pi^2\varphi\right)+\frac{8\pi\varphi^\prime}{\tan{(\pi z)}}-\frac{8\pi{\left(\varphi^\prime\right)}^2}{\sin{\left(\pi x\right)}}
+    \end{equation}
+    at any point with $\left|\varphi^\prime\right|\le 1$. If
+    \begin{equation}\label{eq:I-1-13}
+        d(x,y,0)\ge L(0)\cdot\varphi\left[\frac{s(x,y,0)}{L(0)},0\right]
+    \end{equation}
+    for all $x,y\in\mathcal{M}^1$, then the following inequality holds for any $(x,y,t)\in\mathcal{M}^1\times\left[0,T\right)$, where $\tau(t)=\int_{0}^{t}L^{-2}(t)\,\mathrm{d}t$.
+    \begin{equation*}
+        d(x,y,t)\ge L(t)\cdot\varphi\left[\frac{s(x,y,t)}{L(t)},\tau(t)\right]
+    \end{equation*}
+\end{proposition}
+
+Specifically, we will prove this proposition by using the method of proof by contradiction. Suppose that there exists $(x,y,t_0)\in\mathcal{M}^1\times (0,T)$ is the first point that $Z=0$ then for any $(x,y,t)\in\mathcal{M}^1\times (0,t_0)$ there are $Z(x,y,t)>0$. By the assumption $Z\ge 0$ we know that $(x,y,t_0)$ is a local minimum point of $Z$ then we should have
+\begin{equation*}
+    \left.\left[\frac{\partial}{\partial t}-{\left(\frac{\partial}{\partial x}-\frac{\partial}{\partial y}\right)}^2\right](Z)\right|_{(x,y,t_0)}\le 0
+\end{equation*}
+However, we will show that for the function $\varphi$ that satisfies (\ref{eq:I-1-6}) and other such conditions there are
+\begin{equation}\label{eq:I-1-7}
+    \left[\frac{\partial}{\partial t}-{\left(\frac{\partial}{\partial x}-\frac{\partial}{\partial y}\right)}^2\right](Z)>0
+\end{equation}
+for any $(x,y,t)\in\mathcal{M}^1\times\left[0,T\right)$, which is a contradiction. Thus, the point $Z(x,y,t_0)=0$ can only exist when $t_0=0$. By $Z(\cdot,0)\ge 0$ we finally could get $Z(x,y,t)\ge 0$ for any $(x,y,t)\in\mathcal{M}^1\times [0,T)$ and that completes the proof.
+\begin{lemma}\label{lem:I-1-5}
+    If $\varphi_t$ is strictly concave and positive on $[0,1]$ and $\varphi(z,t)=\varphi(1-z)$, then for all $z\in[0,1/2)$ there are $\varphi^\prime_t>0$ and
+    \begin{equation}
+        \varphi_t-z\varphi^\prime_t>0
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    Since $\varphi(z,t)=\varphi(1-z)$ for any $z\in[0,1]$ then we have
+    \begin{equation*}
+        \varphi^\prime (z,t)=-\varphi^\prime(1-z,t)
+    \end{equation*}
+    For $z=1/2$ we have that $2\varphi^\prime(1/2,t)=0$ which means $z=1/2$ is a critical point. Hence, by the strict concavity, there are $\varphi>0$ and $\varphi^\prime>0$ for any $z<1/2$. Now consider the function $u(z)=\varphi-z\varphi^\prime$. It's easy to know that $u(0)=\varphi (0,t)>0$ and
+    \begin{equation*}
+        u^\prime(z)=\varphi^\prime-\varphi^\prime-z\varphi{''}(z)>0
+    \end{equation*}
+    It follows that $u>0$ on $(0,1]$
+\end{proof}
+
+Note that we also have the following two Cauchy-Schwarz inequalities for the related integrals.
+\begin{align*}
+    s(x,y,t)\int_{x}^{y}\kappa^2\,\mathrm{d}s&=\left(\int_{x}^{y} 1^2\,\mathrm{d}s\right)\cdot\int_{x}^{y}\kappa^2\,\mathrm{d}s\ge{\left(\int_{x}^{y}\kappa\,\mathrm{d}s\right)}^2=4\theta^2\\
+L(t)\int_{M^1}\kappa^2\,\mathrm{d}s&={\left(\int_{M^1}1^2\,\mathrm{d}s\right)}\cdot\int_{M^1}\kappa^2\,\mathrm{d}s\ge{\left(\int_{M^1}\kappa\,\mathrm{d}s\right)}^2=4\pi^2
+\end{align*}
+Then by Lem.\ref{lem:I-1-5} and the result of the previous calculations of the derivatives of $Z$ we have the following estimate for $[\partial_t-{(\partial_x-\partial_y)}^2](Z)$.
+\begin{align*}
+    \left[\frac{\partial}{\partial t}-{\left(\frac{\partial}{\partial x}-\frac{\partial}{\partial y}\right)}^2\right](Z)&=-L(t)\frac{\partial\varphi}{\partial t}+4\frac{\varphi{''}}{L(t)}+\varphi^\prime\int_{x}^{y}\kappa^2\,\mathrm{d}s +\left[\varphi-\frac{s(x,y,t)}{L(t)}\cdot\varphi^\prime\right]\int_{M^1}\kappa\,\mathrm{d}s\\
+    &>-L(t)\frac{\partial\varphi}{\partial t}+4\frac{\varphi{''}}{L(t)}+\frac{4\theta^2}{s(x,y,t)}+\frac{4\pi^2}{L(t)}\left(\varphi-\frac{s}{L}\varphi^\prime\right)\\
+    &=-L(t)\frac{\partial\varphi}{\partial t}+4\frac{\varphi{''}}{L(t)}+\frac{4\arccos^2{(\varphi^\prime)}}{s(x,y,t)}+\frac{4\pi^2}{L(t)}\left(\varphi-\frac{s}{L}\varphi^\prime\right)
+\end{align*}
+where the terms involving inverse trigonometric functions arise from the vanishing of the first derivatives.
+\begin{equation*}
+    \cos{\theta}=\left<w,T(x)\right>=\left<w,T(y)\right>=\varphi^\prime
+\end{equation*}
+The strict inequality in the derivation above stems from the fact that the condition for equality in the Cauchy inequality requires the curvature $\kappa$ of the curve to be constant everywhere; however, the assumption that the curve is not a circle precludes this scenario. (This condition for equality is, in fact, precisely the source of the equality condition for the isoperimetric inequality that we ultimately derived.)
+
+Let $z=s/L\in[0,1]$ then (\ref{eq:I-1-7}) holds if $\varphi$ satisfies the following inequality
+\begin{equation}\label{eq:I-1-9}
+    L^2(t)\cdot\frac{\partial\varphi}{\partial t}\le 4\varphi{''}+\frac{4}{z}\cdot\varphi^\prime\arccos^2{(\varphi^\prime)}+4\pi^2(\varphi-z\varphi^\prime)
+\end{equation}
+From this to get (\ref{eq:I-1-6}) we need to further process the terms in (\ref{eq:I-1-9}) that contain $L^2$ as well as inverse trigonometric functions.
+\begin{lemma}\label{lem:I-1-6}
+    The function $f(x)=\arccos^2{(x)}$ is convex on $[0,1]$, and we also have the following estimation for any $x,z\in[0,1]$.
+    \begin{equation}\label{eq:I-1-8}
+        f(x)\ge\pi^2 z^2+\frac{2\pi z}{\sin{(\pi z)}}[\cos{(\pi z)}-x]
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Let $y=f(x)$ then one can easily get that $y^\prime=-2\sqrt{y}/\sin{(\sqrt{y})}$ and thus
+    \begin{equation*}
+        y{''}=\frac{2\cos{\left(\sqrt{y}\right)}}{\sin^3{\left(\sqrt{y}\right)}}\left[\tan{\left(\sqrt{y}\right)}-\sqrt{y}\right]>0
+    \end{equation*}
+    This shows that $f$ is indeed convex on $[0,1]$. It follows that
+    \begin{equation*}
+        f(x)-f\left[\cos{(\pi z)}\right]\ge f^\prime[\cos{(\pi z)}]\cdot\left[x-\cos{(\pi z)}\right]
+    \end{equation*}
+    Then by substituting $\cos{(\pi z)}$ into $f(x)$ and $f^\prime (x)$ we get (\ref{eq:I-1-8}).
+\end{proof}
+
+By using this Lemma and considering the following chain rule of $\tau(t)=\int_{0}^{t}L^{-2}(t)\,\mathrm{d}t$
+\begin{equation*}
+    \frac{\partial\varphi}{\partial t}=\frac{\partial\varphi}{\partial\tau}\cdot\frac{\mathrm{d}\tau}{\mathrm{d}t}=\frac{1}{L^2(t)}\cdot\frac{\partial\varphi}{\partial\tau}
+\end{equation*}
+from (\ref{eq:I-1-6}) we can deduce that
+\begin{align*}
+    L^2(t)\cdot\frac{\partial\varphi}{\partial t}&\le 4\varphi{''}+4\pi^2\varphi+8\pi\cdot\frac{\varphi^\prime}{\sin{(\pi z)}}\left[\cos{(\pi z)-\varphi^\prime}\right]\\
+    &=4\varphi{''}+4\pi^2 z\varphi^\prime+8\pi\cdot\frac{\varphi^\prime}{\sin{(\pi z)}}\left[\cos{(\pi z)-\varphi^\prime}\right]+4\pi^2\left(\varphi-z\varphi^\prime\right)\\
+    &=4\varphi{''}+\frac{4\varphi^\prime}{z}\cdot\left[\pi^2 z^2+\frac{2\pi z}{\sin{(\pi z)}}[\cos{(\pi z)}-x]\right]+4\pi^2\left(\varphi-z\varphi^\prime\right)\\
+    &\le 4\varphi{''}+\frac{4}{z}\cdot\varphi^\prime\arccos^2{(\varphi^\prime)}+4\pi^2(\varphi-z\varphi^\prime)
+\end{align*}
+This is exactly (\ref{eq:I-1-9}) and therefore Prop.\ref{prop:I-1-2} has been proved.
+
+Now we are going to find a relatively simple smooth function $\varphi$ that satisfies conditions given by Prop.\ref{prop:I-1-2}. We construct such $\varphi$ as $\varphi (z,\tau)=A(\tau)\cdot\Psi[B(\tau)C(z)]$ where $A$, $B$, $C$ and $\Psi$ are all smooth functions. Suppose that $C(0)=0$ then we have
+\begin{equation*}
+    \varphi^\prime(0,\tau)=A(\tau)B(\tau)\cdot\Psi^\prime(0)C^\prime(0)
+\end{equation*}
+We desire $\varphi^\prime(0,\tau)=1$, and therefore stipulate that
+\begin{equation*}
+    A(\tau)B(\tau)=\Psi^\prime(0)=C^\prime(0)=1
+\end{equation*}
+Since it's easy to know that
+\begin{align*}
+    \frac{\partial\varphi}{\partial\tau}&=A^\prime(\tau)\Psi^\prime(BC)+A(\tau)\Psi^\prime(BC)\cdot B^\prime C\\
+    \varphi^\prime(z)&=AB\cdot\Psi^\prime(BC)\cdot C^\prime\\
+    \varphi{''}(z)&=AB\cdot C{''}\Psi^\prime+AB^2 {\left(C^\prime\right)}^2\Psi{''}
+\end{align*}
+then by substituting $\varphi=A\Psi(BC)$ into (\ref{eq:I-1-6}) we can get that
+\begin{align*}
+    A^\prime(\tau)\Psi^\prime(BC)+A(\tau)\Psi^\prime(BC)\cdot B^\prime C&\le 4\left[AB\cdot C{''}\Psi^\prime+AB^2 {\left(C^\prime\right)}^2\Psi{''}+\pi^2 A\cdot \Psi(BC)\right]\\
+    &+\frac{8\pi ABC^\prime\Psi^\prime}{\tan{(\pi z)}}-\frac{8\pi{\left(ABC^\prime\Psi^\prime\right)}^2}{\sin{\pi z}}
+\end{align*}
+From $AB=1$ we know that $B=A^{-1}$ and it follows that $AB^\prime=-A^\prime/A$, $AB^2=1/A$ and ${(AB)}^2=1$. Substituting those results into the above inequality we can get that
+\begin{align*}
+    A^\prime\Psi-\frac{CA^\prime}{A}\Psi^\prime&\le\frac{4{\left(C^\prime\right)}^2}{A}\Psi{''}+4C{''}\Psi^\prime+4\pi^2A\Psi+\frac{8\pi C^\prime\Psi^\prime}{\tan{\pi z}}-\frac{8\pi{\left(C^\prime\right)}^2{\left(\Psi^\prime\right)}^2}{\sin{\pi z}}\\
+    &=\frac{4{\left(C^\prime\right)}^2}{A}\Psi{''}+4C{''}\Psi^\prime+4\pi^2A\Psi+\frac{8\pi\Psi^\prime C^\prime}{\tan{(\pi z)}}\left[1-\frac{C^\prime\Psi^\prime}{\cos{(\pi z)}}\right]
+\end{align*}
+Now let $A=e^{4\pi^2\tau}$ and $C=\pi^{-1}\sin{(\pi z)}$ then we have
+\begin{equation*}
+    0\le \frac{4\cos^2{(\pi z)}}{e^{4\pi^2\tau}}\left[\Psi{''}+\frac{2\pi\cdot e^{4\pi^2\tau}}{\sin{(\pi z)}}\Psi^\prime(1-\Psi^\prime)\right]
+\end{equation*}
+From this we just focus on the following ODE
+\begin{equation}\label{eq:I-1-10}
+    \begin{cases}
+        \Psi{''}+(2/\xi)\Psi^\prime(1-\Psi^\prime)=0\\
+        \Psi(0)=0\\
+        \Psi^\prime(0)=1
+    \end{cases}
+\end{equation}
+where $\xi=\pi^{-1}e^{-4\pi^2\tau}\sin{(\pi z)}$ is the argument of $\Psi$. Let $p(z)=1/\Psi^{\prime}(z)$ then (\ref{eq:I-1-10}) gives that
+\begin{equation*}
+    p^\prime=\frac{2}{\xi}(p-1)
+\end{equation*}
+From this we can solve $p$ as $p=1+C\cdot\xi^2$ and that means $\Psi^\prime(\xi)={\left(1+C\cdot\xi^2\right)}^{-1}$. Therefore, we have
+\begin{equation*}
+    \Psi(\xi)=\Psi(0)+\int_{0}^{\xi}\frac{\mathrm{d}z}{1+C z^2}
+\end{equation*}
+If $C=0$ then we have $\Psi(\xi)=\xi$, it gives that $\varphi(z)=\pi^{-1}\sin{\pi z}$ which is the circle chord-arc profile. If $C<0$ then we have
+\begin{equation*}
+    \Psi(\xi)=\frac{1}{a}\operatorname{arctanh}{(a\xi)}
+\end{equation*}
+This time one can easily varify that such $\varphi$ contradicts the condition $\left|\varphi^\prime\right|\le 1$. If $C>0$ then there exists some $a\in\mathbb{R}$ such that $a^2=C$ and that gives
+\begin{equation*}
+    \Psi(\xi)=\frac{1}{a}\arctan{(a\xi)}
+\end{equation*}
+Hance, in this case there are
+\begin{equation}\label{eq:I-1-11}
+    \varphi(z)=\frac{e^{4\pi^2\tau{(t)}}}{a}\cdot\arctan{\left[\frac{a}{\pi e^{4\pi^2\tau{(t)}}}\cdot\sin{(\pi z)}\right]}
+\end{equation}
+where $z=s(x,y,t)/L(t)\in[0,1]$.
+
+Now along with the idea we introduced at the begining of this section we are going to prove the following theorem which gives the global bound of the curvature $\kappa$, by varifying that such $\varphi$ given by (\ref{eq:I-1-11}) satisfies conditions listed in Prop.\ref{prop:I-1-2}.
+\begin{theorem}\label{thm:I-1-1}
+    If $X:M^1\times[0,T)\to\mathbb{R}^2$ is a smooth solution of curve shortening flow with a smooth initial embedding $X(u,0)=X_0:M^1\to\mathbb{R}^2$ from a compact $1$-manifold to $\mathbb{R}^2$ then for any $(x,t)\in M^1\times [0,T)$ the curvature $\kappa$ have that
+    \begin{equation}
+        \kappa^2(x,t)\le\frac{4\pi^2}{L^2(t)}\cdot\left[1+\frac{2a^2}{\pi^2}e^{-8\pi^2\tau{(t)}}\right]
+    \end{equation}
+    where $\tau(t)=\int_{0}^{t}L^{-2}(t)\,\mathrm{d}t$.
+\end{theorem}
+\begin{proof}
+    We are first going to varify that such $\varphi$ given by (\ref{eq:I-1-11}) satisfies all conditions in Prop.\ref{prop:I-1-2}. Since $\Psi$ is the solution of the ODE (\ref{eq:I-1-10}) then $\varphi$ naturaly satisfies (\ref{eq:I-1-6}). By the monotonicity of $\arctan{(x)}$ on $[0,1]$ and the following equility we could deduce that $\varphi(1/2-h)=\varphi(1/2+h)$ for any $h\in(0,1)$.
+    \begin{equation*}
+        \sin{\pi\left(\frac{1}{2}+h\right)}=\cos{\pi h}=\sin{\pi\left(\frac{1}{2}-h\right)}
+    \end{equation*}
+    That gives the symmetry of $\varphi$. Obviously, such $\varphi$ is smooth and nonegative. Now consider $\left|\varphi^\prime\right|$, by the previous calculation result we have
+    \begin{align*}
+        \left|\varphi^\prime(z)\right|=\left|AB\cdot\Psi^\prime(BC)\cdot C^\prime\right|=\left|\frac{\cos{(\pi z)}\pi^2 K}{\pi^2 K+a^2\sin^2{(\pi z)}}\right|\le\frac{\pi^2 K}{\pi^2 K+a^2\sin^2{(\pi z)}}\le 1
+    \end{align*}
+    where $K=\pi^2 e^{8\pi^2\tau(t)}$. Finally, for the second derivative of $\varphi$ we have that
+    \begin{equation*}
+        \varphi{''}(z)=\frac{\left[(-\pi^3 K\sin{(\pi z)})\right]\left[\pi^2 K+a^2\sin^2{(\pi z)}\right]-\left[\cos{(\pi z)}\cdot\pi^2 K\right]\left[2\pi a^2\sin{(\pi z)}\cos{(\pi z)}\right]}{{\left[\pi^2 K+a^2\sin^2{(\pi z)}\right]}^2}
+    \end{equation*}
+    Note that the numberator could be written as
+    \begin{equation*}
+        -\pi K\sin{(\pi z)}\left[\pi^2 K\left(\pi^2 K+a^2\sin^2{\pi z}\right)+2\pi a^2\cos^2{(\pi z)}\right]
+    \end{equation*}
+    Its negativity gives that $\varphi{''}<0$ on $[0,1]$. Thus $\varphi$ is indeed strictly concave.
+    
+    Now we will show that for any smooth embedding $X_0:M^1\to\mathbb{R}^2$ there exists a constant $a>0$ such that
+    \begin{equation}\label{eq:I-1-12}
+        d(x,y,0)\ge\frac{L(0)}{a}\cdot\arctan{\left[\frac{a}{\pi}\cdot\sin{\left(\frac{\pi s}{L}\right)}\right]}
+    \end{equation}
+    and this is exactly (\ref{eq:I-1-13}). Therefore, by Prop.\ref{prop:I-1-2} we get that for any $(x,y,t)\in M^1\times M^1\times[0,T)$ there are
+    \begin{equation}\label{eq:I-1-14}
+        d(x,y,t)\ge\frac{L(t)e^{4\pi^2\tau{(t)}}}{a}\cdot\arctan{\left[\frac{a}{\pi e^{4\pi^2\tau{(t)}}}\cdot\sin{\left(\frac{\pi s}{L}\right)}\right]}
+    \end{equation}
+    Let $L=L(0)$ and define a function $\Phi_a:[0,L/2]\to\mathbb{R}$ for some $a>0$ as follows
+    \begin{equation*}
+        \Phi_a(s)=\frac{L}{a}\cdot\arctan{\left[\frac{a}{\pi}\cdot\sin{\left(\frac{\pi s}{L}\right)}\right]}
+    \end{equation*}
+    It's easy to know that for any $(x,x)\in M^1$ and $a>0$ there are
+    \begin{equation*}
+        \Phi_a\left[s(x,x,0)\right]=\Phi_a(0)=0=d(x,x,0)
+    \end{equation*}
+    Thus we should only focus on such points $(x,y)\in M^1$ with $x\neq y$. Now we fix $s$ as some values in $[0,L/2]$ and let $r=\pi^{-1}\sin{\left(\pi s/L\right)}$ then there are
+    \begin{equation*}
+        \Phi_a(s)=\frac{L}{a}\cdot\arctan{(ar)}
+    \end{equation*}
+    Easily one can find the derivative of $\Phi_a(s)$ on $a$ as
+    \begin{equation*}
+        \frac{\partial\Phi_a(s)}{\partial a}=\frac{1}{a^2}\left[\frac{ar}{1+a^2 r^2}-\arctan{(ar)}\right]
+    \end{equation*}
+    Since it's also well known that for any $z>0$ there are
+    \begin{equation*}
+        \arctan{(z)}=\int_{0}^{z}\frac{1}{1+u^2}\,\mathrm{d}u>\frac{z^2}{1+z^2}
+    \end{equation*}
+    Then by the negativity of $\partial_a (\Phi_a)$ we know that $\Phi_a(s)$ is strictly decreasing with respect to $a$ for any $s\in[0,L/2]$. Let $z=s(x,y,0)$ be the arc length between $x$ and $y$ on the initial curve $X_0$ and $\mathbf{T}_0(s)$ be the tangent vector of $X_0$ at point $X_0(s)$. Since the curve $X_0$ is smooth and $M^1$ is compact then it's well known that there exists $K>0$ such that
+    \begin{equation*}
+        K=\max_{M_1}{\left|\kappa_0\right|}<\infty
+    \end{equation*}
+    where $\kappa_0=\kappa(s,0)$ is the curvature of $X_0$ with the arc length parameter $s$. By the Taylor expansion we know that as $z\to 0$ for any fixed $a>0$ there are
+    \begin{equation*}
+        \Phi_a(z)=z-\frac{\pi^2+2a^2}{6L^2}\cdot z^3+O(z^5)
+    \end{equation*}
+    Since $\lim_{a\to+\infty}(\pi^2+2a^2)/(6L^2)=+\infty$ then there exists $a_0>0$ such that $(\pi^2+2a^2_0)/(6L^2)>K^2/6$. Hence for some sufficiently small $\delta>0$ there are
+    \begin{equation}\label{eq:I-1-15}
+        \Phi_{a_0}(z)\le z-\frac{K^2}{6}z^3,\quad\forall\, z\in (0,\delta)
+    \end{equation}
+    Now for some $z\in (0,\delta)$ we take $x=X_0(s)$ and then let $y=X_0(s+z)$. By the Cauchy-Schwarz inequality we have
+    \begin{equation*}
+        d(x,y,0)=\left|X_0(s+z)-X_0(s)\right|\ge\left<X_0(s+z)-X_0(s),\mathbf{T}_0(s)\right>=\int_{0}^{z}\left<\mathbf{T}(s+\xi),\mathbf{T}(s)\right>\,\mathrm{d}\xi
+    \end{equation*}
+    Since $\left|\mathrm{d}\mathbf{T}_0/\mathrm{d}s\right|=\left|\kappa\right|\le K$ then by the Lagrangian mean value theorem we have that for any $\xi\in(0,z)$ there are
+    \begin{equation*}
+        \left|\mathbf{T}(s+\xi)-\mathbf{T}(s)\right|\le K\cdot\xi
+    \end{equation*}
+    Therefore we have the following estimation of $d(x,y,0)$:
+    \begin{align*}
+        d(x,y,0)&\ge\int_{0}^{z}\left<\mathbf{T}(s+\xi),\mathbf{T}(s)\right>\,\mathrm{d}\xi\\
+        &=\int_{0}^{z}\left(1-\frac{1}{2}{\left|\mathbf{T}(s+\xi)-\mathbf{T}(s+\xi)\right|}^2\right)\,\mathrm{d}\xi\ge\int_{0}^{z}\left(1-\frac{1}{2}K^2\xi^2\right)\,\mathrm{d}\xi=z-\frac{K^2}{6}z^3
+    \end{align*}
+    This time, by (\ref{eq:I-1-15}) we get that for any $z\in (0,\delta)$ there are $d(x,y,0)\ge \Phi_{a_0}(z)$. Now let's consider such $(x,y)\in M^1\times M^1$ with $z=s(x,y,0)\ge \delta$. Let $A_\delta$ be the set of such $(x,y)$ which is defined as
+    \begin{equation*}
+        A_\delta=\left\{(x,y)\in M^1\times M^1\mid s(x,y,0)\ge\delta,\, x\neq y\right\}
+    \end{equation*}
+    By the compactness of $M^1$ we know that $A_\delta$ is also compact. Since $X_0$ is a smooth embedding then for any $(x,y)\in A_\delta$ there are $X_0(x)\neq X_0(y)$ which gives that
+    \begin{equation*}
+        d(x,y,0)>0,\quad\forall\,(x,y)\in A_\delta
+    \end{equation*}
+    Thus there exists $m>0$ such that for any $(x,y)\in A_\delta$ there are $d(x,y,0)\ge m$. Since $\pi L/2a\to 0$ as $a\to+\infty$, then there exists $a_1>0$ such that $0<\pi L/(2a_1)<m$. Hence we get that
+    \begin{equation*}
+        \Phi_{a_1}(z)=\frac{L}{a_1}\cdot\arctan{[a_1 r(z)]}\le\frac{\pi L}{2a_1}<m
+    \end{equation*}
+    It follows that for any $z\ge\delta$ there are $d(x,y,0)>\Phi_{a_1}(z)$. Finally, let $a=a_1$ then combined with the monotonicity of $\Phi_a$ we have that
+    \begin{equation*}
+        \Phi_a(s(x,y,0))=\Phi_{a_1}(z)\le d(x,y,0)
+    \end{equation*}
+    and that is exactly (\ref{eq:I-1-12}).
+
+    Ultimately, with the Taylor expansion of $\varphi$ given by (\ref{eq:I-1-11}) we have
+    \begin{equation*}
+        \varphi(z)=z-\left(\frac{\pi^2}{6}+\frac{a^2}{3e^{8\pi^2\tau(t)}}\right)z^3+O(z^5)
+    \end{equation*}
+    as $z\to 0$. Then combined with Prop.\ref{prop:I-2-2} we can get that
+    \begin{equation*}
+        K^2\le 24\left(\frac{\pi^2}{6}+\frac{a^2}{3e^{8\pi^2\tau(t)}}\right)=\frac{4\pi^2}{L^2(t)}\cdot\left[1+\frac{2a^2}{\pi^2}e^{-8\pi^2\tau{(t)}}\right]
+    \end{equation*}
+    and we complete the proof.
+\end{proof}
+
+\subsubsection{Global Existence and the Limit Calculation}
+
+In this section, we will give a sketch of the proof for Thm.\ref{thm:I-1-2}; by leveraging this result in conjunction with Thm.\ref{thm:I-1-1}—introduced in the previous section—we will derive Conclusion of $\lim_{t\to T}L(t)=0$. Finally, through a detailed proof of Lem.\ref{lem:I-1-8}, we will establish
+\begin{equation*}
+    \lim_{t\to T}Q_{\boldsymbol{\alpha}}(t)=\lim_{t\to T}\left[L^2(t)-4\pi\cdot A(t)\right]=0
+\end{equation*}
+thereby completing the proof of the isoperimetric inequality (Thm.\ref{thm:P-Isoperimetric Inequality}) for the case of smooth embedded planar curve.
+
+\begin{theorem}\label{thm:I-1-2}
+    Let $X:M^1\times[0,T)\to\mathbb{R}^2$ be a smooth solution of the curve shortening flow. If $T$ is the maximal time of existence then
+    \begin{equation}
+        \limsup_{t\to T}\sup_{M^1\times\left\{t\right\}}\left|\kappa\right|=\infty
+    \end{equation}
+\end{theorem}
+
+We will prove this theorem by using the proof of contrapositive. Specifically, we will show that if there are
+\begin{equation*}
+    \sup_{M^1\times[0,T)}\left|\kappa\right|=K<\infty
+\end{equation*}
+then we can find some $\delta>0$ such that $X$ extends smoothly to $M^1\times[0,T+\delta)$ which is contradicted to Prop.\ref{prop:I-2-1}. To do this we will first find some bounds for the parameterization map $X$ and its derivatives, then by applying the Arzela-Ascoli theorem we will obtain a smooth limit solution as $t\to T$ and thereby extend the solution via the following theorem (the detailed proof of this theorem can be found in\,\cite{shorttimeexistence})
+\begin{theorem}\label{thm:short time existence}
+    Let $M^1$ be a closed $1$-manifold and let $X_0:M^1\to\mathbb{R}^2$ be a smooth immersion. Then there exists $\epsilon>0$ and a smooth solution $X(t):M^1\to\mathbb{R}^2$ to the curve shortening flow defined for $t\in[0,\epsilon)$ and satisfying $X(0)=X_0$.
+\end{theorem}
+
+Firstly, one can find a very simple supremum bound:
+\begin{equation*}
+    \left|X(x,t)-X(x,0)\right|\le\int_{0}^{t}\left|\frac{\partial X}{\partial t}(x,\tau)\right|\,\mathrm{d}\tau\le K\left|t\right|\le KT
+\end{equation*}
+Now we fix a parameter $x$ as the arc length parameter for the curve when $t=0$. Then we are going to control all of the derivatives of $X$ with respect to this fixed parametrization.
+\begin{lemma}\label{lem:I-1-9}
+    For any $x\in M^1$ and $t\in[0,T)$, there are
+    \begin{equation}\label{eq:I-1-17}
+        \exp{\left(-K^2 T\right)}\le\left|X^\prime(x,t)\right|\le 1
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    We first claim that for any solution $X(u,t)$, $X^{\prime}$ denotes its first derivative of $u$ that is $X^\prime=\partial_x X$. Then by differentiate on the both sides of ${\left|X^\prime\right|}^2=\left<X^\prime,X^\prime\right>$ we can get that
+    \begin{align*}
+        \frac{\partial}{\partial t}\left|X^\prime\right|=\frac{1}{\left|X^\prime\right|}\cdot\left<X^\prime,\frac{\partial X^\prime}{\partial t}\right>=\left<\mathbf{T},\frac{\mathrm{d}s}{\mathrm{d}x}\cdot\frac{\partial}{\partial s}\cdot\frac{\partial X}{\partial t}\right>={\left|X^\prime\right|}\left<\mathbf{T},\frac{\partial}{\partial s}\left(-\kappa\cdot\mathbf{N}\right)\right>
+    \end{align*}
+    Then combined with (\ref{eq:I-1-16}) we can get that
+    \begin{equation*}
+        \frac{\partial}{\partial t}\left|X^\prime\right|=-\kappa^2\left|X^\prime\right|
+    \end{equation*}
+    By solving this ODE we know that
+    \begin{equation*}
+        \left|X^\prime(x,t)\right|=\exp{\left[-\int_{0}^{t}\kappa^2(x,\tau)\,\mathrm{d}\tau\right]}
+    \end{equation*}
+    then combined with $\left|\kappa(x,\tau)\right|\le K$ we know that
+    \begin{equation*}
+        0\le\int_{0}^{t}\kappa^2(x,\tau)\,\mathrm{d}\tau\le K^2 t\le K^2 T
+    \end{equation*}
+    Finally, by considering the monotonicity of the exponential function we can exatly get (\ref{eq:I-1-17}) as follows.
+    \begin{equation*}
+        \exp{\left(-K^2 T\right)}\le\exp{\left(-\int_{0}^{t}\kappa^2\,\mathrm{d}\tau\right)}=\left|X^\prime(x,t)\right|\le\exp{(0)}=1
+    \end{equation*}
+\end{proof}
+
+\newpage
+\begin{lemma}\label{lem:I-1-7}
+    For any smooth solution of the curve shortening flow the length of the curve must approch zero, that is
+    \begin{equation}
+        \lim_{t\to T}L(t)=0
+    \end{equation}
+\end{lemma}
+
+\begin{lemma}\label{lem:I-1-8}
+    Let $X:M^1\times[0,T)\to\mathbb{R}^2$, $M^1\cong S^1$, be a maximal embedded solution of the curve shortening flow. Then the area $A(t)$ enclosed by $\mathcal{M}_t$ is given by
+    \begin{equation}
+        A(t)=2\pi (T-t)
+    \end{equation}
+\end{lemma}
+
+\subsection{The Case on a Sphere}
+
+In this section we are going to consider the isoperimetric problem (Prob.\ref{prob:I-1-1}) on a sphere. This serves not only as a generalization of the planar case discussed in the previous section but also as a springboard—and a conceptual paradigm—for subsequently addressing isoperimetric problems on more general Riemann surfaces and indeed, on some higher dimensional Riemannian manifolds. Although this problem was solved long ago—and by a variety of methods (see\,\cite{martinez2021isoperimetric})—we wish to emphasize the elegance and conciseness of the proof technique that utilizes curve-shortening flow on the sphere, as well as the unique value this approach offers in terms of geometric intuition.
+
+\begin{theorem}\label{thm:S-Isoperimetric Inequality}
+    Let $S^2_R$ be a sphere with radius $R>0$, $\Omega\subseteq S^2_R$ be a bounded, closed and simply connected region on $S^2_R$. We denote $A=\left|\Omega\right|$ as the area of such region and $\gamma=\partial\Omega$ as its boundary. If $L$ is the parameter of such closed curve $\gamma$ then we always have the following isoperimetric inequality.
+    \begin{equation}\label{eq:S-IsoInequlity}
+        L^2 R^2\ge A\left(4\pi R^2-A\right)
+    \end{equation}
+    Equality holds if and only if $\gamma$ is a spherical cap.
+\end{theorem}
+
+We will prove this theorem by using the same method we introduced in the planar case, that is we consider a quantity $Q(t)$ which related to (\ref{eq:S-IsoInequlity}), then after we showing that $Q(t)$ is monotonicaly non-increasing for any smooth embedded curve under the curve shortening flow and $\lim_{t\to T}Q(t)=0$ we will get Thm.\ref{thm:S-Isoperimetric Inequality}. One may note that this idea is actually generalizable to the application of geometric flow techniques for solving any geometric inequality.
+
+Since the radius $R$ acts merely as a scaling factor under similarity transformations, we may, without loss of generality, restrict our subsequent discussion to the case of the unit sphere $S^2$. Furthermore, noting that the right-hand side of Inequality (\ref{eq:S-IsoInequlity}) is symmetric with respect to $A=2\pi$, we may assume that any initial closed curve $\gamma_0$ always have $0<A\le 2\pi$; otherwise—by virtue of the Jordan Curve Theorem—we need only consider the area of the complementary region on the sphere. Thus we now set the monoton quantity of the initial closed curve $\gamma$ as
+\begin{equation*}
+    Q_\gamma(t)=L^2(t)-A(t)\left[4\pi-A(t)\right]
+\end{equation*}
+
+\subsubsection{The Evolution of the Monoton Quantity}
+
+For a smooth closed curve $\gamma$ let $X:M^1\to S^2$ be its smooth immersion parameterized by arc length $s$, where $M^1$ is isomorphic to the torus $\mathbb{S}^1$. Let $\mathbf{T}(s)=X^\prime(s)$ and $\mathbf{N}(s)=-J\cdot\mathbf{T}$ be the unit tangent and normal vector fields along $\gamma$ repectively, where $J$ is the counterclockwise rotation by $\pi/2$. Then let $\kappa_g (s)$ be the geodesic curvature of $\gamma$ at $s$, which is defined by the following equation
+\begin{equation}\label{eq:Geodesic k}
+    \begin{cases}
+        \nabla_s \mathbf{T}(s)=-\kappa_g\cdot\mathbf{N}\\
+        \nabla_s \mathbf{N}(s)=\kappa_g\cdot\mathbf{T}\\
+    \end{cases}
+\end{equation}
+where $\nabla_s$ is Levi-Civita of the unit sphere $S^2$ along $\gamma$. Let $X^\prime=\partial_u X$ and $\mathcal{M}^1=X(M^1)$ then by $\mathrm{d}s={\left|X^\prime\right|}_g\,\mathrm{d}u$ we could calculate the length of the curve as follows
+\begin{equation*}
+    L=\int_{\mathcal{M}^1}\,\mathrm{d}s=\int_{M^1}{\left|X^\prime(u)\right|}_g\,\mathrm{d}u
+\end{equation*}
+
+Now let $X:M^1\times[0,T)\to S^2$ be a smooth map, which is an immersion for each fixed $t\in[0,T)$. We say that $X(t)$ is a solution of the curve shortening flow on the unite sphere $S^2$ if it satisfies that
+\begin{equation}\label{eq:CSF-sphere}
+    \frac{\partial X}{\partial t}(u,t)=-\kappa_g\cdot\mathbf{N}(u,t)
+\end{equation}
+
+As we did in the previous section we are going to find out the first variation of $L(t)$ and $A(t)$ of $X(u,t)$ under the above curve shortening flow. We first claim that
+\begin{equation}\label{eq:L-t-S}
+    \frac{\mathrm{d}L}{\mathrm{d}t}=-\int_{M^1}\kappa^2_g\,\mathrm{d}s
+\end{equation}
+To prove this we first note that there are
+\begin{equation*}
+    \left|X^\prime\right|\cdot\frac{\partial\left|X^\prime\right|}{\partial t}={\left<\nabla_t X^\prime, X^\prime\right>}_g={\left<\nabla_u X_t, X^\prime\right>}_g
+\end{equation*}
+where $X_t=\partial_t X$. This is because the Levi-Civita connection is torsion free. Then combined with (\ref{eq:CSF-sphere}) we get that
+\begin{align*}
+    \left|X^\prime\right|\cdot\frac{\partial\left|X^\prime\right|}{\partial t}&={\left<\nabla_u\left(-\kappa_g\cdot\mathbf{N}\right),\left|X^\prime\right|\mathbf{T}\right>}_g\\
+    &=-{\left|X^\prime\right|}^2{\left<\nabla_s\left(\kappa_g\cdot\mathbf{N}\right),\mathbf{T}\right>}_g\\
+    &=-{\left|X^\prime\right|}^2{\left<(\partial_s\kappa_g)\mathbf{N},\mathbf{T}\right>}_g-{\left|X^\prime\right|}^2{\left<\kappa_g\left(\nabla_s\mathbf{N}\right),\mathbf{T}\right>}_g
+\end{align*}
+Since there are $\left<\mathbf{N},\mathbf{T}\right>=0$ and $\nabla_s \mathbf{N}(s)=\kappa_g\cdot\mathbf{T}$ we finally get that
+\begin{equation*}
+    \frac{\partial}{\partial t}\left|X^\prime\right|=-\kappa^2_g\left|X^\prime\right|
+\end{equation*}
+Therefore, the first variation of the curve length $L(t)$ could be calculated as
+\begin{equation*}
+    \frac{\mathrm{d}L}{\mathrm{d}t}=\frac{\mathrm{d}}{\mathrm{d}t}\int_{\mathcal{M}^1}\,\mathrm{d}s=\int_{M^1}\frac{\partial}{\partial t}\left|X^\prime\right|\mathrm{d}u=-\int_{M^1}\kappa^2_g\,\mathrm{d}s
+\end{equation*}
+and that is (\ref{eq:L-t-S})
